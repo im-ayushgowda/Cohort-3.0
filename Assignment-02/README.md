@@ -3,9 +3,8 @@
 A modern insect showcase landing page inspired by premium museum and collection UI designs.  
 Built using pure HTML and CSS.
 
-## 🚀 Live Preview
+## 🚀 Live Demo Link
 
-Add your GitHub Pages link here:
 
 (https://im-ayushgowda.github.io/Cohort-3.0/Assignment-02/)
 
