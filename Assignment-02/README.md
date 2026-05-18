@@ -10,12 +10,6 @@ Add your GitHub Pages link here:
 (https://im-ayushgowda.github.io/Cohort-3.0/Assignment-02/)
 
 
-## 📸 Preview
-
-![Project Preview](preview.png)
-
----
-
 ## ✨ Features
 
 - Split-screen modern layout
