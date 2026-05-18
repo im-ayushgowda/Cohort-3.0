@@ -7,11 +7,8 @@ Built using pure HTML and CSS.
 
 Add your GitHub Pages link here:
 
-```bash
-https://your-username.github.io/repository-name/
-```
+(https://im-ayushgowda.github.io/Cohort-3.0/Assignment-02/)
 
----
 
 ## 📸 Preview
 
