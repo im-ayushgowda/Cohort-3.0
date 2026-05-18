@@ -237,7 +237,7 @@ body {
 .hero-image {
     width: 500px;
     height: 550px;
-    background: url('mainImg.png') center/cover no-repeat;
+    background: url('mainImg (1).png') center/cover no-repeat;
     position: relative;
     z-index: 2;
 }
