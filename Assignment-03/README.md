@@ -9,17 +9,9 @@ Inspired by premium fashion brand interfaces and cyberpunk-inspired product show
 
 🌐 Live Website:
 
-```bash
 https://im-ayushgowda.github.io/Cohort-3.0/Assignment-03/
-```
 
----
 
-## 📸 Preview
-
-![Aurora Winter Drop Preview](preview.png)
-
----
 
 ## ✨ Features
 
