@@ -9,7 +9,7 @@ A clean, searchable, single-file JavaScript reference covering **80+ beginner qu
 ## 🔴 Live Demo
 
 
-https://im-ayushgowda.github.io/Cohort-3.0/js-basics-reference
+[https://im-ayushgowda.github.io/Cohort-3.0/js-basics-reference](https://im-ayushgowda.github.io/Cohort-3.0/JavaScript%20Beginner%20Practice%20Questions/)
 ---
 
 ## 📚 Topics Covered
