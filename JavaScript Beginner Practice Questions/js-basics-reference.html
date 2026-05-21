@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Basics — Complete Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d0f14;
+    --bg2: #13161e;
+    --bg3: #1a1e28;
+    --bg4: #222634;
+    --border: #2a2f40;
+    --border2: #363c52;
+    --text: #e8eaf0;
+    --text2: #8b90a8;
+    --text3: #555a72;
+    --accent: #5b8af0;
+    --accent-dim: #1e2d52;
+    --green: #4eca8b;
+    --green-dim: #162a22;
+    --amber: #f0b45b;
+    --amber-dim: #2a2010;
+    --pink: #e06b8b;
+    --pink-dim: #2a1520;
+    --teal: #4eccc8;
+    --teal-dim: #0f2a2a;
+    --radius: 8px;
+    --radius-lg: 12px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* ── Header ── */
+  header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 2rem 1.5rem 1.5rem;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .header-inner { max-width: 900px; margin: 0 auto; }
+  .logo {
+    font-size: 1.5rem; font-weight: 800; letter-spacing: -0.03em;
+    color: var(--text); margin-bottom: 1rem;
+  }
+  .logo span { color: var(--accent); }
+  .controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .search-wrap {
+    position: relative; flex: 1; min-width: 200px;
+  }
+  .search-wrap input {
+    width: 100%; background: var(--bg3); border: 1px solid var(--border2);
+    border-radius: var(--radius); padding: 8px 12px 8px 36px;
+    color: var(--text); font-family: 'Syne', sans-serif; font-size: 14px;
+    outline: none; transition: border-color 0.2s;
+  }
+  .search-wrap input:focus { border-color: var(--accent); }
+  .search-wrap input::placeholder { color: var(--text3); }
+  .search-icon {
+    position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+    color: var(--text3); font-size: 15px; pointer-events: none;
+  }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    font-size: 11px; font-weight: 600; padding: 4px 12px;
+    border-radius: 999px; border: 1px solid var(--border2);
+    background: var(--bg3); color: var(--text2); cursor: pointer;
+    transition: all 0.15s; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .tag:hover { border-color: var(--border2); background: var(--bg4); color: var(--text); }
+  .tag.active { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+
+  /* ── Main ── */
+  main { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  .section { margin-bottom: 2.5rem; }
+  .section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 12px;
+  }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text3);
+    padding: 3px 10px; border: 1px solid var(--border);
+    border-radius: 999px;
+  }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+
+  /* ── Question blocks ── */
+  .q-block {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg2);
+    margin-bottom: 6px;
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+  .q-block:hover { border-color: var(--border2); }
+  .q-block.open { border-color: var(--border2); }
+
+  .q-header {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 12px 16px; cursor: pointer; user-select: none;
+  }
+  .q-num {
+    min-width: 24px; height: 24px; border-radius: 6px;
+    background: var(--bg4); border: 1px solid var(--border2);
+    font-size: 11px; font-weight: 600; font-family: 'JetBrains Mono', monospace;
+    color: var(--text3); display: flex; align-items: center; justify-content: center;
+    margin-top: 1px; flex-shrink: 0;
+  }
+  .q-text { flex: 1; font-size: 14px; color: var(--text2); font-weight: 400; line-height: 1.5; }
+  .q-block.open .q-text { color: var(--text); }
+  .q-chevron { color: var(--text3); font-size: 13px; transition: transform 0.2s; margin-top: 3px; flex-shrink: 0; }
+  .q-block.open .q-chevron { transform: rotate(90deg); color: var(--accent); }
+
+  .q-body { display: none; border-top: 1px solid var(--border); }
+  .q-block.open .q-body { display: block; }
+
+  pre {
+    padding: 16px 20px; font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; line-height: 1.75; overflow-x: auto;
+    background: var(--bg3); color: #c9d1e8; tab-size: 2;
+    white-space: pre;
+  }
+
+  /* ── Syntax colors ── */
+  .kw  { color: #7eb8f7; }
+  .str { color: #88d498; }
+  .num { color: #f0c070; }
+  .cmt { color: #4a5170; font-style: italic; }
+  .fn  { color: #d4a0d0; }
+  .op  { color: #e08060; }
+
+  /* ── Stats bar ── */
+  .stats {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    padding: 1rem 0 1.5rem;
+    font-size: 12px; color: var(--text3);
+    border-bottom: 1px solid var(--border); margin-bottom: 2rem;
+  }
+  .stat strong { color: var(--accent); font-weight: 600; }
+
+  /* ── No results ── */
+  .no-results {
+    text-align: center; padding: 4rem 0;
+    color: var(--text3); font-size: 14px;
+  }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center; padding: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text3); font-size: 12px;
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">JS<span>.</span>Basics — Complete Reference</div>
+    <div class="controls">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="searchInput" placeholder="Search questions..." oninput="filterAll()">
+      </div>
+      <div class="tags" id="tagBar">
+        <span class="tag active" onclick="setTag('all',this)">All</span>
+        <span class="tag" onclick="setTag('console',this)">Console</span>
+        <span class="tag" onclick="setTag('variables',this)">Variables</span>
+        <span class="tag" onclick="setTag('datatypes',this)">Data Types</span>
+        <span class="tag" onclick="setTag('conversion',this)">Conversion</span>
+        <span class="tag" onclick="setTag('operators',this)">Operators</span>
+        <span class="tag" onclick="setTag('strings',this)">Strings</span>
+        <span class="tag" onclick="setTag('math',this)">Math</span>
+        <span class="tag" onclick="setTag('conditionals',this)">Conditionals</span>
+        <span class="tag" onclick="setTag('truthy',this)">Truthy/Falsy</span>
+        <span class="tag" onclick="setTag('ternary',this)">Ternary</span>
+        <span class="tag" onclick="setTag('mixed',this)">Mixed</span>
+        <span class="tag" onclick="setTag('logical',this)">Logical</span>
+        <span class="tag" onclick="setTag('challenge',this)">Challenges</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="stats" id="statsBar"></div>
+  <div id="allSections"></div>
+  <div class="no-results" id="noResults" style="display:none">No matching questions found.</div>
+</main>
+
+<footer>JavaScript Basics Reference &mdash; All topics in one file</footer>
+
+<script>
+const DATA = [
+  { section: "Console & Basics", tag: "console", items: [
+    { q: 'Print "Hello JavaScript" in the console', code:
+`console.<span class="fn">log</span>(<span class="str">"Hello JavaScript"</span>);` },
+    { q: 'Print name, age, and city using one console.log()', code:
+`console.<span class="fn">log</span>(<span class="str">"Name: Aman"</span>, <span class="str">"Age: 20"</span>, <span class="str">"City: Delhi"</span>);
+<span class="cmt">// or using template literal</span>
+console.<span class="fn">log</span>(<span class="str">\`Name: Aman, Age: 20, City: Delhi\`</span>);` },
+    { q: 'Print a warning message using console.warn()', code:
+`console.<span class="fn">warn</span>(<span class="str">"Warning: This is a test warning!"</span>);` },
+    { q: 'Print an error message using console.error()', code:
+`console.<span class="fn">error</span>(<span class="str">"Error: Something went wrong!"</span>);` },
+    { q: 'Use console.table() to display an array of 5 numbers', code:
+`<span class="kw">const</span> nums = [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>, <span class="num">40</span>, <span class="num">50</span>];
+console.<span class="fn">table</span>(nums);` },
+  ]},
+
+  { section: "Variables", tag: "variables", items: [
+    { q: 'Create a variable called studentName and store your name', code:
+`<span class="kw">let</span> studentName = <span class="str">"Aman"</span>;
+console.<span class="fn">log</span>(studentName);` },
+    { q: 'Create a variable age and print it', code:
+`<span class="kw">let</span> age = <span class="num">20</span>;
+console.<span class="fn">log</span>(age);` },
+    { q: 'Create two variables and swap their values', code:
+`<span class="kw">let</span> a = <span class="num">5</span>, b = <span class="num">10</span>;
+<span class="kw">let</span> temp = a;
+a = b;
+b = temp;
+console.<span class="fn">log</span>(a, b); <span class="cmt">// 10 5</span>
+<span class="cmt">// ES6 destructuring swap:</span>
+[a, b] = [b, a];` },
+    { q: 'Create a constant variable for PI and print it', code:
+`<span class="kw">const</span> PI = <span class="num">3.14159</span>;
+console.<span class="fn">log</span>(PI);` },
+    { q: 'Declare a variable without assigning a value and print it', code:
+`<span class="kw">let</span> x;
+console.<span class="fn">log</span>(x); <span class="cmt">// undefined</span>` },
+    { q: 'Create a variable score and increase it by 10', code:
+`<span class="kw">let</span> score = <span class="num">50</span>;
+score += <span class="num">10</span>;
+console.<span class="fn">log</span>(score); <span class="cmt">// 60</span>` },
+    { q: 'Create three variables for first name, last name, and full name', code:
+`<span class="kw">let</span> firstName = <span class="str">"Aman"</span>;
+<span class="kw">let</span> lastName  = <span class="str">"Sharma"</span>;
+<span class="kw">let</span> fullName  = firstName + <span class="str">" "</span> + lastName;
+console.<span class="fn">log</span>(fullName); <span class="cmt">// "Aman Sharma"</span>` },
+  ]},
+
+  { section: "Data Types", tag: "datatypes", items: [
+    { q: 'Create variables of type string, number, boolean, null, and undefined', code:
+`<span class="kw">let</span> str  = <span class="str">"Hello"</span>;      <span class="cmt">// string</span>
+<span class="kw">let</span> num  = <span class="num">42</span>;          <span class="cmt">// number</span>
+<span class="kw">let</span> bool = <span class="kw">true</span>;        <span class="cmt">// boolean</span>
+<span class="kw">let</span> n    = <span class="kw">null</span>;        <span class="cmt">// null</span>
+<span class="kw">let</span> u;                   <span class="cmt">// undefined</span>` },
+    { q: 'Check the type of different variables using typeof', code:
+`console.<span class="fn">log</span>(<span class="kw">typeof</span> <span class="str">"Hello"</span>);    <span class="cmt">// "string"</span>
+console.<span class="fn">log</span>(<span class="kw">typeof</span> <span class="num">42</span>);        <span class="cmt">// "number"</span>
+console.<span class="fn">log</span>(<span class="kw">typeof</span> <span class="kw">true</span>);      <span class="cmt">// "boolean"</span>
+console.<span class="fn">log</span>(<span class="kw">typeof</span> <span class="kw">undefined</span>); <span class="cmt">// "undefined"</span>
+console.<span class="fn">log</span>(<span class="kw">typeof</span> <span class="kw">null</span>);      <span class="cmt">// "object" ← JS quirk!</span>` },
+    { q: 'Store your mobile number in a variable and check its type', code:
+`<span class="kw">let</span> mobile = <span class="num">9876543210</span>;
+console.<span class="fn">log</span>(<span class="kw">typeof</span> mobile); <span class="cmt">// "number"</span>` },
+    { q: 'Create a variable with value null and check its type', code:
+`<span class="kw">let</span> val = <span class="kw">null</span>;
+console.<span class="fn">log</span>(<span class="kw">typeof</span> val); <span class="cmt">// "object" ← known JS bug, not truly an object</span>` },
+    { q: 'Create a bigint number and print it', code:
+`<span class="kw">const</span> big = <span class="num">9007199254740991</span>n;
+console.<span class="fn">log</span>(big);         <span class="cmt">// 9007199254740991n</span>
+console.<span class="fn">log</span>(<span class="kw">typeof</span> big);  <span class="cmt">// "bigint"</span>` },
+  ]},
+
+  { section: "Type Conversion & Coercion", tag: "conversion", items: [
+    { q: 'Convert the string "50" into a number', code:
+`<span class="kw">let</span> num = <span class="fn">Number</span>(<span class="str">"50"</span>);
+console.<span class="fn">log</span>(num, <span class="kw">typeof</span> num); <span class="cmt">// 50 "number"</span>` },
+    { q: 'Convert the number 100 into a string', code:
+`<span class="kw">let</span> str = <span class="fn">String</span>(<span class="num">100</span>);
+console.<span class="fn">log</span>(str, <span class="kw">typeof</span> str); <span class="cmt">// "100" "string"</span>
+<span class="cmt">// Alternative:</span>
+<span class="kw">let</span> str2 = (<span class="num">100</span>).toString();` },
+    { q: 'Convert "true" into a boolean', code:
+`<span class="kw">let</span> bool = <span class="str">"true"</span> === <span class="str">"true"</span>;  <span class="cmt">// true (proper way)</span>
+<span class="cmt">// Boolean("true") also returns true — any non-empty string is truthy</span>` },
+    { q: 'Check the output of: "5"+2, "5"-2, true+1', code:
+`console.<span class="fn">log</span>(<span class="str">"5"</span> + <span class="num">2</span>);    <span class="cmt">// "52"  — string concat (+)</span>
+console.<span class="fn">log</span>(<span class="str">"5"</span> - <span class="num">2</span>);    <span class="cmt">// 3    — numeric coercion (-)</span>
+console.<span class="fn">log</span>(<span class="kw">true</span> + <span class="num">1</span>);  <span class="cmt">// 2    — true coerces to 1</span>` },
+    { q: 'Convert "123abc" into a number', code:
+`console.<span class="fn">log</span>(<span class="fn">Number</span>(<span class="str">"123abc"</span>));   <span class="cmt">// NaN</span>
+console.<span class="fn">log</span>(<span class="fn">parseInt</span>(<span class="str">"123abc"</span>)); <span class="cmt">// 123 — reads until non-digit</span>` },
+    { q: 'Use parseInt() on "500px"', code:
+`console.<span class="fn">log</span>(<span class="fn">parseInt</span>(<span class="str">"500px"</span>)); <span class="cmt">// 500</span>` },
+  ]},
+
+  { section: "Operators", tag: "operators", items: [
+    { q: 'Add two numbers and print the result', code:
+`<span class="kw">let</span> sum = <span class="num">15</span> + <span class="num">25</span>;
+console.<span class="fn">log</span>(sum); <span class="cmt">// 40</span>` },
+    { q: 'Find the remainder when 25 is divided by 4', code:
+`console.<span class="fn">log</span>(<span class="num">25</span> % <span class="num">4</span>); <span class="cmt">// 1</span>` },
+    { q: 'Find the square of a number using exponent operator', code:
+`console.<span class="fn">log</span>(<span class="num">5</span> ** <span class="num">2</span>); <span class="cmt">// 25</span>` },
+    { q: 'Increment a variable using ++', code:
+`<span class="kw">let</span> x = <span class="num">5</span>;
+x++;
+console.<span class="fn">log</span>(x); <span class="cmt">// 6</span>` },
+    { q: 'Decrement a variable using --', code:
+`<span class="kw">let</span> x = <span class="num">5</span>;
+x--;
+console.<span class="fn">log</span>(x); <span class="cmt">// 4</span>` },
+    { q: 'Use += operator to increase a variable by 20', code:
+`<span class="kw">let</span> score = <span class="num">80</span>;
+score += <span class="num">20</span>;
+console.<span class="fn">log</span>(score); <span class="cmt">// 100</span>` },
+    { q: 'Compare two numbers using >, <, >=, <=', code:
+`console.<span class="fn">log</span>(<span class="num">10</span> > <span class="num">5</span>);    <span class="cmt">// true</span>
+console.<span class="fn">log</span>(<span class="num">10</span> < <span class="num">5</span>);    <span class="cmt">// false</span>
+console.<span class="fn">log</span>(<span class="num">10</span> >= <span class="num">10</span>);  <span class="cmt">// true</span>
+console.<span class="fn">log</span>(<span class="num">10</span> <= <span class="num">9</span>);   <span class="cmt">// false</span>` },
+    { q: 'Check if two values are strictly equal using ===', code:
+`console.<span class="fn">log</span>(<span class="num">5</span> === <span class="num">5</span>);     <span class="cmt">// true</span>
+console.<span class="fn">log</span>(<span class="num">5</span> === <span class="str">"5"</span>);  <span class="cmt">// false — different types</span>` },
+    { q: 'Compare "10" and 10 using == and ===', code:
+`console.<span class="fn">log</span>(<span class="str">"10"</span> == <span class="num">10</span>);   <span class="cmt">// true  — type coercion</span>
+console.<span class="fn">log</span>(<span class="str">"10"</span> === <span class="num">10</span>);  <span class="cmt">// false — strict comparison</span>` },
+    { q: 'Create two boolean variables and test &&, ||, and !', code:
+`<span class="kw">let</span> p = <span class="kw">true</span>, q = <span class="kw">false</span>;
+console.<span class="fn">log</span>(p && q); <span class="cmt">// false — both must be true</span>
+console.<span class="fn">log</span>(p || q); <span class="cmt">// true  — at least one true</span>
+console.<span class="fn">log</span>(!p);     <span class="cmt">// false — negation</span>` },
+  ]},
+
+  { section: "Strings", tag: "strings", items: [
+    { q: 'Create a string and print its length', code:
+`<span class="kw">let</span> str = <span class="str">"JavaScript"</span>;
+console.<span class="fn">log</span>(str.length); <span class="cmt">// 10</span>` },
+    { q: 'Convert a string into uppercase', code:
+`console.<span class="fn">log</span>(<span class="str">"hello"</span>.<span class="fn">toUpperCase</span>()); <span class="cmt">// "HELLO"</span>` },
+    { q: 'Convert a string into lowercase', code:
+`console.<span class="fn">log</span>(<span class="str">"HELLO"</span>.<span class="fn">toLowerCase</span>()); <span class="cmt">// "hello"</span>` },
+    { q: 'Check if a string includes the word "JavaScript"', code:
+`<span class="kw">let</span> str = <span class="str">"I love JavaScript!"</span>;
+console.<span class="fn">log</span>(str.<span class="fn">includes</span>(<span class="str">"JavaScript"</span>)); <span class="cmt">// true</span>` },
+    { q: 'Extract the word "World" from "Hello World"', code:
+`<span class="kw">let</span> str = <span class="str">"Hello World"</span>;
+console.<span class="fn">log</span>(str.<span class="fn">slice</span>(<span class="num">6</span>, <span class="num">11</span>));     <span class="cmt">// "World"</span>
+console.<span class="fn">log</span>(str.<span class="fn">substring</span>(<span class="num">6</span>, <span class="num">11</span>)); <span class="cmt">// "World"</span>` },
+    { q: 'Replace "apple" with "mango" in a sentence', code:
+`<span class="kw">let</span> str = <span class="str">"I like apple juice"</span>;
+console.<span class="fn">log</span>(str.<span class="fn">replace</span>(<span class="str">"apple"</span>, <span class="str">"mango"</span>));
+<span class="cmt">// "I like mango juice"</span>` },
+    { q: 'Split "HTML,CSS,JS" into an array', code:
+`<span class="kw">let</span> arr = <span class="str">"HTML,CSS,JS"</span>.<span class="fn">split</span>(<span class="str">","</span>);
+console.<span class="fn">log</span>(arr); <span class="cmt">// ["HTML", "CSS", "JS"]</span>` },
+    { q: 'Remove extra spaces from a string', code:
+`<span class="kw">let</span> str = <span class="str">"  Hello World  "</span>;
+console.<span class="fn">log</span>(str.<span class="fn">trim</span>()); <span class="cmt">// "Hello World"</span>` },
+    { q: 'Repeat the word "Hi" 5 times', code:
+`console.<span class="fn">log</span>(<span class="str">"Hi"</span>.<span class="fn">repeat</span>(<span class="num">5</span>)); <span class="cmt">// "HiHiHiHiHi"</span>` },
+    { q: 'Print the first character of a string', code:
+`<span class="kw">let</span> str = <span class="str">"JavaScript"</span>;
+console.<span class="fn">log</span>(str[<span class="num">0</span>]);        <span class="cmt">// "J"</span>
+console.<span class="fn">log</span>(str.<span class="fn">charAt</span>(<span class="num">0</span>));  <span class="cmt">// "J"</span>` },
+    { q: 'Use template literals to print name and age', code:
+`<span class="kw">let</span> name = <span class="str">"Aman"</span>, age = <span class="num">20</span>;
+console.<span class="fn">log</span>(<span class="str">\`My name is \${name} and I am \${age} years old\`</span>);` },
+  ]},
+
+  { section: "Numbers & Math", tag: "math", items: [
+    { q: 'Round 4.7 using Math.round()', code:
+`console.<span class="fn">log</span>(Math.<span class="fn">round</span>(<span class="num">4.7</span>)); <span class="cmt">// 5</span>` },
+    { q: 'Find the square root of 81', code:
+`console.<span class="fn">log</span>(Math.<span class="fn">sqrt</span>(<span class="num">81</span>)); <span class="cmt">// 9</span>` },
+    { q: 'Find the maximum number from 10, 20, 5, 99', code:
+`console.<span class="fn">log</span>(Math.<span class="fn">max</span>(<span class="num">10</span>, <span class="num">20</span>, <span class="num">5</span>, <span class="num">99</span>)); <span class="cmt">// 99</span>` },
+    { q: 'Generate a random number between 1 and 10', code:
+`<span class="kw">let</span> rand = Math.<span class="fn">floor</span>(Math.<span class="fn">random</span>() * <span class="num">10</span>) + <span class="num">1</span>;
+console.<span class="fn">log</span>(rand); <span class="cmt">// 1–10</span>` },
+    { q: 'Convert "99.99" into an integer', code:
+`console.<span class="fn">log</span>(<span class="fn">parseInt</span>(<span class="str">"99.99"</span>));    <span class="cmt">// 99</span>
+console.<span class="fn">log</span>(Math.<span class="fn">floor</span>(<span class="num">99.99</span>));  <span class="cmt">// 99</span>` },
+    { q: 'Check whether 25 is an integer or not', code:
+`console.<span class="fn">log</span>(Number.<span class="fn">isInteger</span>(<span class="num">25</span>));    <span class="cmt">// true</span>
+console.<span class="fn">log</span>(Number.<span class="fn">isInteger</span>(<span class="num">25.5</span>));  <span class="cmt">// false</span>` },
+    { q: 'Use toFixed(2) on 3.141592', code:
+`console.<span class="fn">log</span>((<span class="num">3.141592</span>).<span class="fn">toFixed</span>(<span class="num">2</span>)); <span class="cmt">// "3.14"</span>` },
+  ]},
+
+  { section: "Conditionals", tag: "conditionals", items: [
+    { q: 'Check whether a number is positive or negative', code:
+`<span class="kw">let</span> n = -<span class="num">7</span>;
+<span class="kw">if</span> (n > <span class="num">0</span>)      console.<span class="fn">log</span>(<span class="str">"Positive"</span>);
+<span class="kw">else if</span> (n < <span class="num">0</span>) console.<span class="fn">log</span>(<span class="str">"Negative"</span>);
+<span class="kw">else</span>            console.<span class="fn">log</span>(<span class="str">"Zero"</span>);` },
+    { q: 'Check whether a number is even or odd', code:
+`<span class="kw">let</span> n = <span class="num">7</span>;
+console.<span class="fn">log</span>(n % <span class="num">2</span> === <span class="num">0</span> ? <span class="str">"Even"</span> : <span class="str">"Odd"</span>);` },
+    { q: 'Check whether a person is eligible to vote', code:
+`<span class="kw">let</span> age = <span class="num">18</span>;
+<span class="kw">if</span> (age >= <span class="num">18</span>) console.<span class="fn">log</span>(<span class="str">"Eligible to vote"</span>);
+<span class="kw">else</span>           console.<span class="fn">log</span>(<span class="str">"Not eligible"</span>);` },
+    { q: 'Find the largest among two numbers', code:
+`<span class="kw">let</span> a = <span class="num">12</span>, b = <span class="num">25</span>;
+console.<span class="fn">log</span>(a > b ? a : b); <span class="cmt">// 25</span>` },
+    { q: 'Find the largest among three numbers', code:
+`<span class="kw">let</span> a = <span class="num">10</span>, b = <span class="num">40</span>, c = <span class="num">25</span>;
+console.<span class="fn">log</span>(Math.<span class="fn">max</span>(a, b, c)); <span class="cmt">// 40</span>` },
+    { q: 'Check whether a year is a leap year', code:
+`<span class="kw">let</span> year = <span class="num">2024</span>;
+<span class="kw">if</span> ((year % <span class="num">4</span> === <span class="num">0</span> && year % <span class="num">100</span> !== <span class="num">0</span>) || year % <span class="num">400</span> === <span class="num">0</span>)
+  console.<span class="fn">log</span>(<span class="str">"Leap year"</span>);
+<span class="kw">else</span>
+  console.<span class="fn">log</span>(<span class="str">"Not a leap year"</span>);` },
+    { q: 'Check whether a number is divisible by both 3 and 5', code:
+`<span class="kw">let</span> n = <span class="num">15</span>;
+<span class="kw">if</span> (n % <span class="num">3</span> === <span class="num">0</span> && n % <span class="num">5</span> === <span class="num">0</span>)
+  console.<span class="fn">log</span>(<span class="str">"Divisible by 3 and 5"</span>);
+<span class="kw">else</span>
+  console.<span class="fn">log</span>(<span class="str">"Not divisible by both"</span>);` },
+    { q: 'Grading system: 90+→A, 75+→B, 50+→C, below 50→Fail', code:
+`<span class="kw">let</span> score = <span class="num">82</span>;
+<span class="kw">if</span> (score >= <span class="num">90</span>)       console.<span class="fn">log</span>(<span class="str">"Grade: A"</span>);
+<span class="kw">else if</span> (score >= <span class="num">75</span>)  console.<span class="fn">log</span>(<span class="str">"Grade: B"</span>);
+<span class="kw">else if</span> (score >= <span class="num">50</span>)  console.<span class="fn">log</span>(<span class="str">"Grade: C"</span>);
+<span class="kw">else</span>                   console.<span class="fn">log</span>(<span class="str">"Fail"</span>);` },
+    { q: 'Check whether a character is a vowel or consonant', code:
+`<span class="kw">let</span> ch = <span class="str">"e"</span>;
+<span class="str">"aeiouAEIOU"</span>.<span class="fn">includes</span>(ch)
+  ? console.<span class="fn">log</span>(<span class="str">"Vowel"</span>)
+  : console.<span class="fn">log</span>(<span class="str">"Consonant"</span>);` },
+    { q: 'Create a calculator using switch statement', code:
+`<span class="kw">let</span> a = <span class="num">10</span>, b = <span class="num">5</span>, op = <span class="str">"+"</span>;
+<span class="kw">switch</span> (op) {
+  <span class="kw">case</span> <span class="str">"+"</span>: console.<span class="fn">log</span>(a + b); <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="str">"-"</span>: console.<span class="fn">log</span>(a - b); <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="str">"*"</span>: console.<span class="fn">log</span>(a * b); <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="str">"/"</span>: console.<span class="fn">log</span>(a / b); <span class="kw">break</span>;
+  <span class="kw">default</span>: console.<span class="fn">log</span>(<span class="str">"Invalid operator"</span>);
+}` },
+    { q: 'Print the day name based on a number (1–7)', code:
+`<span class="kw">let</span> day = <span class="num">3</span>;
+<span class="kw">switch</span> (day) {
+  <span class="kw">case</span> <span class="num">1</span>: console.<span class="fn">log</span>(<span class="str">"Monday"</span>);    <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="num">2</span>: console.<span class="fn">log</span>(<span class="str">"Tuesday"</span>);   <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="num">3</span>: console.<span class="fn">log</span>(<span class="str">"Wednesday"</span>); <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="num">4</span>: console.<span class="fn">log</span>(<span class="str">"Thursday"</span>);  <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="num">5</span>: console.<span class="fn">log</span>(<span class="str">"Friday"</span>);    <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="num">6</span>: console.<span class="fn">log</span>(<span class="str">"Saturday"</span>);  <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="num">7</span>: console.<span class="fn">log</span>(<span class="str">"Sunday"</span>);    <span class="kw">break</span>;
+  <span class="kw">default</span>: console.<span class="fn">log</span>(<span class="str">"Invalid (use 1–7)"</span>);
+}` },
+    { q: 'Check username is "admin" and password is "1234"', code:
+`<span class="kw">let</span> username = <span class="str">"admin"</span>, password = <span class="str">"1234"</span>;
+<span class="kw">if</span> (username === <span class="str">"admin"</span> && password === <span class="str">"1234"</span>)
+  console.<span class="fn">log</span>(<span class="str">"Access granted"</span>);
+<span class="kw">else</span>
+  console.<span class="fn">log</span>(<span class="str">"Access denied"</span>);` },
+  ]},
+
+  { section: "Truthy & Falsy", tag: "truthy", items: [
+    { q: 'Check whether an empty string is truthy or falsy', code:
+`<span class="kw">if</span> (<span class="str">""</span>) console.<span class="fn">log</span>(<span class="str">"Truthy"</span>);
+<span class="kw">else</span>    console.<span class="fn">log</span>(<span class="str">"Falsy"</span>); <span class="cmt">// → Falsy</span>
+<span class="cmt">// Falsy values: false, 0, "", null, undefined, NaN</span>` },
+    { q: 'Check whether 0 is truthy or falsy', code:
+`<span class="kw">if</span> (<span class="num">0</span>) console.<span class="fn">log</span>(<span class="str">"Truthy"</span>);
+<span class="kw">else</span>   console.<span class="fn">log</span>(<span class="str">"Falsy"</span>); <span class="cmt">// → Falsy</span>` },
+    { q: 'Check whether [] is truthy or falsy', code:
+`<span class="kw">if</span> ([]) console.<span class="fn">log</span>(<span class="str">"Truthy"</span>);
+<span class="kw">else</span>   console.<span class="fn">log</span>(<span class="str">"Falsy"</span>); <span class="cmt">// → Truthy (all objects/arrays are truthy)</span>` },
+    { q: 'Print "Valid" if variable has a value, otherwise "Invalid"', code:
+`<span class="kw">let</span> username = <span class="str">"Aman"</span>;
+console.<span class="fn">log</span>(username ? <span class="str">"Valid"</span> : <span class="str">"Invalid"</span>); <span class="cmt">// "Valid"</span>
+
+<span class="kw">let</span> empty = <span class="str">""</span>;
+console.<span class="fn">log</span>(empty ? <span class="str">"Valid"</span> : <span class="str">"Invalid"</span>);    <span class="cmt">// "Invalid"</span>` },
+  ]},
+
+  { section: "Ternary Operator", tag: "ternary", items: [
+    { q: 'Check whether a number is even or odd using ternary', code:
+`<span class="kw">let</span> n = <span class="num">7</span>;
+<span class="kw">let</span> result = n % <span class="num">2</span> === <span class="num">0</span> ? <span class="str">"Even"</span> : <span class="str">"Odd"</span>;
+console.<span class="fn">log</span>(result); <span class="cmt">// "Odd"</span>` },
+    { q: 'Check whether age is above 18 using ternary', code:
+`<span class="kw">let</span> age = <span class="num">20</span>;
+<span class="kw">let</span> status = age > <span class="num">18</span> ? <span class="str">"Adult"</span> : <span class="str">"Minor"</span>;
+console.<span class="fn">log</span>(status); <span class="cmt">// "Adult"</span>` },
+    { q: 'Find the greater number between two values using ternary', code:
+`<span class="kw">let</span> a = <span class="num">45</span>, b = <span class="num">72</span>;
+<span class="kw">let</span> greater = a > b ? a : b;
+console.<span class="fn">log</span>(<span class="str">"Greater:"</span>, greater); <span class="cmt">// 72</span>` },
+  ]},
+
+  { section: "Mixed Practice", tag: "mixed", items: [
+    { q: 'Mini biodata program using variables and template literals', code:
+`<span class="kw">let</span> name      = <span class="str">"Aman Sharma"</span>;
+<span class="kw">let</span> age       = <span class="num">20</span>;
+<span class="kw">let</span> city      = <span class="str">"Delhi"</span>;
+<span class="kw">let</span> hobby     = <span class="str">"Coding"</span>;
+<span class="kw">let</span> course    = <span class="str">"JavaScript"</span>;
+
+console.<span class="fn">log</span>(<span class="str">\`
+===== BIODATA =====
+Name   : \${name}
+Age    : \${age}
+City   : \${city}
+Hobby  : \${hobby}
+Course : \${course}
+===================
+\`</span>);` },
+    { q: 'Calculate the area of a rectangle', code:
+`<span class="kw">let</span> length = <span class="num">10</span>;
+<span class="kw">let</span> width  = <span class="num">5</span>;
+<span class="kw">let</span> area   = length * width;
+console.<span class="fn">log</span>(<span class="str">\`Area of rectangle: \${area} sq units\`</span>); <span class="cmt">// 50</span>` },
+    { q: 'Calculate simple interest', code:
+`<span class="kw">let</span> principal = <span class="num">10000</span>; <span class="cmt">// in rupees</span>
+<span class="kw">let</span> rate      = <span class="num">5</span>;     <span class="cmt">// % per year</span>
+<span class="kw">let</span> time      = <span class="num">3</span>;     <span class="cmt">// years</span>
+<span class="kw">let</span> SI        = (principal * rate * time) / <span class="num">100</span>;
+console.<span class="fn">log</span>(<span class="str">\`Simple Interest: ₹\${SI}\`</span>); <span class="cmt">// ₹1500</span>` },
+    { q: 'Convert temperature from Celsius to Fahrenheit', code:
+`<span class="kw">let</span> celsius    = <span class="num">37</span>;
+<span class="kw">let</span> fahrenheit = (celsius * <span class="num">9</span> / <span class="num">5</span>) + <span class="num">32</span>;
+console.<span class="fn">log</span>(<span class="str">\`\${celsius}°C = \${fahrenheit}°F\`</span>); <span class="cmt">// 98.6°F</span>` },
+    { q: 'Convert kilometers into meters', code:
+`<span class="kw">let</span> km     = <span class="num">5</span>;
+<span class="kw">let</span> meters = km * <span class="num">1000</span>;
+console.<span class="fn">log</span>(<span class="str">\`\${km} km = \${meters} meters\`</span>); <span class="cmt">// 5000</span>` },
+    { q: 'Calculate total marks and percentage of 5 subjects', code:
+`<span class="kw">let</span> marks = [<span class="num">85</span>, <span class="num">90</span>, <span class="num">78</span>, <span class="num">92</span>, <span class="num">88</span>];
+<span class="kw">let</span> total  = marks.<span class="fn">reduce</span>((sum, m) => sum + m, <span class="num">0</span>);
+<span class="kw">let</span> percent = (total / (<span class="num">5</span> * <span class="num">100</span>)) * <span class="num">100</span>;
+console.<span class="fn">log</span>(<span class="str">\`Total: \${total}/500\`</span>);
+console.<span class="fn">log</span>(<span class="str">\`Percentage: \${percent}%\`</span>); <span class="cmt">// 86.6%</span>` },
+    { q: 'Calculate electricity bill based on units consumed', code:
+`<span class="kw">let</span> units = <span class="num">250</span>;
+<span class="kw">let</span> bill;
+<span class="kw">if</span> (units <= <span class="num">100</span>)       bill = units * <span class="num">3</span>;
+<span class="kw">else if</span> (units <= <span class="num">200</span>) bill = <span class="num">100</span> * <span class="num">3</span> + (units - <span class="num">100</span>) * <span class="num">5</span>;
+<span class="kw">else</span>                   bill = <span class="num">100</span> * <span class="num">3</span> + <span class="num">100</span> * <span class="num">5</span> + (units - <span class="num">200</span>) * <span class="num">7</span>;
+console.<span class="fn">log</span>(<span class="str">\`Bill for \${units} units: ₹\${bill}\`</span>); <span class="cmt">// ₹1150</span>` },
+    { q: 'Create a username generator using first name and birth year', code:
+`<span class="kw">let</span> firstName = <span class="str">"Aman"</span>;
+<span class="kw">let</span> birthYear = <span class="num">2004</span>;
+<span class="kw">let</span> username  = firstName.<span class="fn">toLowerCase</span>() + birthYear;
+console.<span class="fn">log</span>(<span class="str">\`Username: \${username}\`</span>); <span class="cmt">// "aman2004"</span>` },
+    { q: 'Check whether a string starts with a specific letter', code:
+`<span class="kw">let</span> str    = <span class="str">"JavaScript"</span>;
+<span class="kw">let</span> letter = <span class="str">"J"</span>;
+console.<span class="fn">log</span>(str.<span class="fn">startsWith</span>(letter));         <span class="cmt">// true</span>
+console.<span class="fn">log</span>(str[<span class="num">0</span>] === letter);              <span class="cmt">// true (alternative)</span>` },
+    { q: 'Count total characters in a sentence excluding spaces', code:
+`<span class="kw">let</span> sentence = <span class="str">"Hello World How Are You"</span>;
+<span class="kw">let</span> count = sentence.<span class="fn">split</span>(<span class="str">""</span>).<span class="fn">filter</span>(c => c !== <span class="str">" "</span>).length;
+console.<span class="fn">log</span>(<span class="str">\`Characters (no spaces): \${count}\`</span>); <span class="cmt">// 19</span>` },
+  ]},
+
+  { section: "Logical Thinking", tag: "logical", items: [
+    { q: 'Take two numbers and print which one is greater', code:
+`<span class="kw">let</span> a = <span class="num">34</span>, b = <span class="num">67</span>;
+<span class="kw">if</span> (a > b)         console.<span class="fn">log</span>(<span class="str">\`\${a} is greater\`</span>);
+<span class="kw">else if</span> (b > a)    console.<span class="fn">log</span>(<span class="str">\`\${b} is greater\`</span>);
+<span class="kw">else</span>               console.<span class="fn">log</span>(<span class="str">"Both are equal"</span>);` },
+    { q: 'Check whether a number lies between 10 and 50', code:
+`<span class="kw">let</span> n = <span class="num">35</span>;
+<span class="kw">if</span> (n > <span class="num">10</span> && n < <span class="num">50</span>)
+  console.<span class="fn">log</span>(<span class="str">\`\${n} is between 10 and 50\`</span>);
+<span class="kw">else</span>
+  console.<span class="fn">log</span>(<span class="str">\`\${n} is NOT between 10 and 50\`</span>);` },
+    { q: 'Check whether a password length is greater than 8', code:
+`<span class="kw">let</span> password = <span class="str">"mySecret9"</span>;
+<span class="kw">if</span> (password.length > <span class="num">8</span>)
+  console.<span class="fn">log</span>(<span class="str">"Strong password ✓"</span>);
+<span class="kw">else</span>
+  console.<span class="fn">log</span>(<span class="str">"Weak — must be more than 8 characters"</span>);` },
+    { q: 'Check if a person can drive (age > 18 AND has license)', code:
+`<span class="kw">let</span> age        = <span class="num">22</span>;
+<span class="kw">let</span> hasLicense = <span class="kw">true</span>;
+<span class="kw">if</span> (age > <span class="num">18</span> && hasLicense)
+  console.<span class="fn">log</span>(<span class="str">"Can drive ✓"</span>);
+<span class="kw">else</span>
+  console.<span class="fn">log</span>(<span class="str">"Cannot drive"</span>);` },
+    { q: 'Check whether a number is divisible by 2, 3, or both', code:
+`<span class="kw">let</span> n = <span class="num">6</span>;
+<span class="kw">if</span> (n % <span class="num">2</span> === <span class="num">0</span> && n % <span class="num">3</span> === <span class="num">0</span>) console.<span class="fn">log</span>(<span class="str">"Divisible by both 2 and 3"</span>);
+<span class="kw">else if</span> (n % <span class="num">2</span> === <span class="num">0</span>)           console.<span class="fn">log</span>(<span class="str">"Divisible by 2 only"</span>);
+<span class="kw">else if</span> (n % <span class="num">3</span> === <span class="num">0</span>)           console.<span class="fn">log</span>(<span class="str">"Divisible by 3 only"</span>);
+<span class="kw">else</span>                             console.<span class="fn">log</span>(<span class="str">"Not divisible by 2 or 3"</span>);` },
+    { q: 'Print greeting based on time of day', code:
+`<span class="kw">let</span> hour = <span class="kw">new</span> <span class="fn">Date</span>().<span class="fn">getHours</span>();
+<span class="kw">if</span> (hour < <span class="num">12</span>)      console.<span class="fn">log</span>(<span class="str">"Good Morning 🌅"</span>);
+<span class="kw">else if</span> (hour < <span class="num">17</span>) console.<span class="fn">log</span>(<span class="str">"Good Afternoon ☀️"</span>);
+<span class="kw">else</span>                console.<span class="fn">log</span>(<span class="str">"Good Evening 🌙"</span>);` },
+    { q: 'Find whether a number is a multiple of 10', code:
+`<span class="kw">let</span> n = <span class="num">70</span>;
+console.<span class="fn">log</span>(n % <span class="num">10</span> === <span class="num">0</span>
+  ? <span class="str">\`\${n} is a multiple of 10\`</span>
+  : <span class="str">\`\${n} is NOT a multiple of 10\`</span>);` },
+    { q: 'Create a simple discount calculator', code:
+`<span class="kw">let</span> price    = <span class="num">2000</span>;
+<span class="kw">let</span> discount = price > <span class="num">1500</span> ? <span class="num">20</span> : <span class="num">10</span>; <span class="cmt">// 20% if >1500, else 10%</span>
+<span class="kw">let</span> savings  = (price * discount) / <span class="num">100</span>;
+<span class="kw">let</span> finalPrice = price - savings;
+console.<span class="fn">log</span>(<span class="str">\`Discount: \${discount}% = ₹\${savings}\`</span>);
+console.<span class="fn">log</span>(<span class="str">\`Final price: ₹\${finalPrice}\`</span>);` },
+    { q: 'Check whether a product is in stock', code:
+`<span class="kw">let</span> productName = <span class="str">"Laptop"</span>;
+<span class="kw">let</span> stock       = <span class="num">0</span>;
+<span class="kw">if</span> (stock > <span class="num">0</span>)
+  console.<span class="fn">log</span>(<span class="str">\`\${productName} is in stock (\${stock} left)\`</span>);
+<span class="kw">else</span>
+  console.<span class="fn">log</span>(<span class="str">\`\${productName} is OUT of stock\`</span>);` },
+    { q: 'Calculate final bill after GST', code:
+`<span class="kw">let</span> price   = <span class="num">1000</span>;
+<span class="kw">let</span> gstRate = <span class="num">18</span>; <span class="cmt">// 18% GST</span>
+<span class="kw">let</span> gst     = (price * gstRate) / <span class="num">100</span>;
+<span class="kw">let</span> total   = price + gst;
+console.<span class="fn">log</span>(<span class="str">\`Price:  ₹\${price}\`</span>);
+console.<span class="fn">log</span>(<span class="str">\`GST:    ₹\${gst} (\${gstRate}%)\`</span>);
+console.<span class="fn">log</span>(<span class="str">\`Total:  ₹\${total}\`</span>);` },
+  ]},
+
+  { section: "Challenge Questions", tag: "challenge", items: [
+    { q: 'Generate a random OTP of 4 digits', code:
+`<span class="kw">let</span> otp = Math.<span class="fn">floor</span>(<span class="num">1000</span> + Math.<span class="fn">random</span>() * <span class="num">9000</span>);
+console.<span class="fn">log</span>(<span class="str">\`Your OTP is: \${otp}\`</span>); <span class="cmt">// e.g. 4739</span>` },
+    { q: 'Reverse a 3-letter string manually', code:
+`<span class="kw">let</span> str = <span class="str">"cat"</span>;
+<span class="kw">let</span> reversed = str[<span class="num">2</span>] + str[<span class="num">1</span>] + str[<span class="num">0</span>];
+console.<span class="fn">log</span>(reversed); <span class="cmt">// "tac"</span>
+<span class="cmt">// General approach for any length:</span>
+<span class="kw">let</span> rev2 = str.<span class="fn">split</span>(<span class="str">""</span>).<span class="fn">reverse</span>().<span class="fn">join</span>(<span class="str">""</span>);` },
+    { q: 'Find the last character of a string', code:
+`<span class="kw">let</span> str = <span class="str">"JavaScript"</span>;
+console.<span class="fn">log</span>(str[str.length - <span class="num">1</span>]);      <span class="cmt">// "t"</span>
+console.<span class="fn">log</span>(str.<span class="fn">at</span>(-<span class="num">1</span>));               <span class="cmt">// "t" (ES2022)</span>` },
+    { q: 'Convert a full name into uppercase initials', code:
+`<span class="kw">let</span> fullName = <span class="str">"Aman Kumar Sharma"</span>;
+<span class="kw">let</span> initials = fullName
+  .<span class="fn">split</span>(<span class="str">" "</span>)
+  .<span class="fn">map</span>(word => word[<span class="num">0</span>].<span class="fn">toUpperCase</span>())
+  .<span class="fn">join</span>(<span class="str">"."</span>);
+console.<span class="fn">log</span>(initials); <span class="cmt">// "A.K.S"</span>` },
+    { q: 'Check whether two strings are equal ignoring case sensitivity', code:
+`<span class="kw">let</span> str1 = <span class="str">"Hello"</span>;
+<span class="kw">let</span> str2 = <span class="str">"HELLO"</span>;
+<span class="kw">if</span> (str1.<span class="fn">toLowerCase</span>() === str2.<span class="fn">toLowerCase</span>())
+  console.<span class="fn">log</span>(<span class="str">"Strings are equal (case-insensitive)"</span>);
+<span class="kw">else</span>
+  console.<span class="fn">log</span>(<span class="str">"Strings are different"</span>);` },
+    { q: 'Create a simple login validation system', code:
+`<span class="kw">const</span> VALID_USER = <span class="str">"admin"</span>;
+<span class="kw">const</span> VALID_PASS = <span class="str">"pass@123"</span>;
+
+<span class="kw">let</span> username = <span class="str">"admin"</span>;
+<span class="kw">let</span> password = <span class="str">"pass@123"</span>;
+
+<span class="kw">if</span> (!username || !password) {
+  console.<span class="fn">log</span>(<span class="str">"Fields cannot be empty"</span>);
+} <span class="kw">else if</span> (username === VALID_USER && password === VALID_PASS) {
+  console.<span class="fn">log</span>(<span class="str">\`Welcome, \${username}! Login successful.\`</span>);
+} <span class="kw">else</span> {
+  console.<span class="fn">log</span>(<span class="str">"Invalid credentials. Try again."</span>);
+}` },
+    { q: 'Find whether a number is a 2-digit or 3-digit number', code:
+`<span class="kw">let</span> n = <span class="num">456</span>;
+<span class="kw">if</span> (n >= <span class="num">10</span> && n <= <span class="num">99</span>)
+  console.<span class="fn">log</span>(<span class="str">"2-digit number"</span>);
+<span class="kw">else if</span> (n >= <span class="num">100</span> && n <= <span class="num">999</span>)
+  console.<span class="fn">log</span>(<span class="str">"3-digit number"</span>);
+<span class="kw">else</span>
+  console.<span class="fn">log</span>(<span class="str">"Neither 2-digit nor 3-digit"</span>);` },
+    { q: 'Create a mini ATM balance checker', code:
+`<span class="kw">let</span> balance    = <span class="num">5000</span>;
+<span class="kw">let</span> withdrawal = <span class="num">2000</span>;
+
+<span class="kw">if</span> (withdrawal <= <span class="num">0</span>) {
+  console.<span class="fn">log</span>(<span class="str">"Invalid amount"</span>);
+} <span class="kw">else if</span> (withdrawal > balance) {
+  console.<span class="fn">log</span>(<span class="str">\`Insufficient balance. Available: ₹\${balance}\`</span>);
+} <span class="kw">else</span> {
+  balance -= withdrawal;
+  console.<span class="fn">log</span>(<span class="str">\`₹\${withdrawal} dispensed. Remaining: ₹\${balance}\`</span>);
+}` },
+    { q: 'Simulate a traffic light system using switch', code:
+`<span class="kw">let</span> signal = <span class="str">"green"</span>; <span class="cmt">// "red" | "yellow" | "green"</span>
+<span class="kw">switch</span> (signal) {
+  <span class="kw">case</span> <span class="str">"red"</span>:
+    console.<span class="fn">log</span>(<span class="str">"🔴 STOP"</span>); <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="str">"yellow"</span>:
+    console.<span class="fn">log</span>(<span class="str">"🟡 GET READY"</span>); <span class="kw">break</span>;
+  <span class="kw">case</span> <span class="str">"green"</span>:
+    console.<span class="fn">log</span>(<span class="str">"🟢 GO"</span>); <span class="kw">break</span>;
+  <span class="kw">default</span>:
+    console.<span class="fn">log</span>(<span class="str">"Invalid signal"</span>);
+}` },
+    { q: 'Build a small marksheet generator', code:
+`<span class="kw">let</span> name     = <span class="str">"Aman Sharma"</span>;
+<span class="kw">let</span> english  = <span class="num">85</span>;
+<span class="kw">let</span> math     = <span class="num">92</span>;
+<span class="kw">let</span> science  = <span class="num">78</span>;
+<span class="kw">let</span> hindi    = <span class="num">88</span>;
+<span class="kw">let</span> computer = <span class="num">95</span>;
+
+<span class="kw">let</span> total   = english + math + science + hindi + computer;
+<span class="kw">let</span> percent = (total / <span class="num">500</span>) * <span class="num">100</span>;
+<span class="kw">let</span> grade;
+
+<span class="kw">if</span> (percent >= <span class="num">90</span>)      grade = <span class="str">"A+"</span>;
+<span class="kw">else if</span> (percent >= <span class="num">75</span>) grade = <span class="str">"A"</span>;
+<span class="kw">else if</span> (percent >= <span class="num">60</span>) grade = <span class="str">"B"</span>;
+<span class="kw">else if</span> (percent >= <span class="num">50</span>) grade = <span class="str">"C"</span>;
+<span class="kw">else</span>                    grade = <span class="str">"F"</span>;
+
+console.<span class="fn">log</span>(<span class="str">\`
+========== MARKSHEET ==========
+Student  : \${name}
+English  : \${english}
+Math     : \${math}
+Science  : \${science}
+Hindi    : \${hindi}
+Computer : \${computer}
+-------------------------------
+Total    : \${total}/500
+Percent  : \${percent.toFixed(2)}%
+Grade    : \${grade}
+===============================\`</span>);` },
+  ]},
+];
+
+let activeTag = 'all';
+
+function renderAll(filter = '') {
+  const container = document.getElementById('allSections');
+  const noResults = document.getElementById('noResults');
+  const statsBar  = document.getElementById('statsBar');
+  container.innerHTML = '';
+  const q = filter.toLowerCase().trim();
+  let totalQ = 0, totalSec = 0;
+
+  DATA.forEach(section => {
+    if (activeTag !== 'all' && section.tag !== activeTag) return;
+    const filtered = section.items.filter(item =>
+      !q || item.q.toLowerCase().includes(q)
+    );
+    if (!filtered.length) return;
+    totalQ += filtered.length;
+    totalSec++;
+
+    const sec = document.createElement('div');
+    sec.className = 'section';
+
+    const header = document.createElement('div');
+    header.className = 'section-header';
+    header.innerHTML = `<span class="section-label">${section.section}</span><div class="section-line"></div>`;
+    sec.appendChild(header);
+
+    filtered.forEach((item, i) => {
+      const block = document.createElement('div');
+      block.className = 'q-block';
+      block.innerHTML = `
+        <div class="q-header" onclick="toggle(this.parentElement)">
+          <span class="q-num">${i + 1}</span>
+          <span class="q-text">${item.q}</span>
+          <span class="q-chevron">▶</span>
+        </div>
+        <div class="q-body"><pre>${item.code}</pre></div>`;
+      sec.appendChild(block);
+    });
+    container.appendChild(sec);
+  });
+
+  statsBar.innerHTML = `<span><strong>${totalQ}</strong> questions</span><span><strong>${totalSec}</strong> sections</span>`;
+  noResults.style.display = totalQ === 0 ? 'block' : 'none';
+}
+
+function toggle(block) {
+  block.classList.toggle('open');
+}
+
+function filterAll() {
+  renderAll(document.getElementById('searchInput').value);
+}
+
+function setTag(tag, el) {
+  activeTag = tag;
+  document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderAll(document.getElementById('searchInput').value);
+}
+
+renderAll();
+</script>
+</body>
+</html>
