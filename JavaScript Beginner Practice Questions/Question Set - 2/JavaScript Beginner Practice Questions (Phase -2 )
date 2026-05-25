@@ -1,1 +1,1296 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Practice Questions & Answers</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #111827;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: #111827;
+    }
+
+    header p {
+      color: #6b7280;
+      margin-top: 10px;
+    }
+
+    .section {
+      background: #ffffff;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-radius: 12px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      border: 1px solid #e5e7eb;
+    }
+
+    .section h2 {
+      color: #111827;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .qa {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #fafafa;
+      border-radius: 10px;
+    }
+
+    .question {
+      font-weight: bold;
+      color: #111827;
+      margin-bottom: 10px;
+    }
+
+    pre {
+      background: #f3f4f6;
+      color: #dc2626;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+
+    code {
+      font-family: Consolas, monospace;
+    }
+
+    footer {
+      border-top: 1px solid #e5e7eb;
+      padding-top: 20px;
+      text-align: center;
+      margin-top: 40px;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="font-size:60px; margin-bottom:10px;">💾</div>
+    <h1>JavaScript Practice Questions & Answers</h1>
+    <p>JavaScript Beginner Practice Questions (Phase-2)</p>
+  </header>
+
+  <div class="section">
+    <h2>Part 1 — Functions Basics</h2>
+
+    <div class="qa">
+      <div class="question">1. Create a function named greet that prints "Hello World".</div>
+      <pre><code>function greet() {
+  console.log("Hello World");
+}
+
+greet();</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">2. Create a function add(a, b) that returns the sum.</div>
+      <pre><code>function add(a, b) {
+  return a + b;
+}
+
+console.log(add(5, 3));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">3. Write a function to calculate the square of a number.</div>
+      <pre><code>function square(num) {
+  return num * num;
+}
+
+console.log(square(4));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">4. Create a function that checks whether a number is even or odd.</div>
+      <pre><code>function checkEvenOdd(num) {
+  return num % 2 === 0 ? "Even" : "Odd";
+}
+
+console.log(checkEvenOdd(7));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">5. Write a function that converts Celsius to Fahrenheit.</div>
+      <pre><code>function celsiusToFahrenheit(c) {
+  return (c * 9/5) + 32;
+}
+
+console.log(celsiusToFahrenheit(30));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">6. Create a function with default parameter "Guest".</div>
+      <pre><code>function welcome(name = "Guest") {
+  console.log(`Welcome ${name}`);
+}
+
+welcome();
+welcome("Ayush");</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">7. Write a function that returns the greater of two numbers.</div>
+      <pre><code>function greater(a, b) {
+  return a > b ? a : b;
+}
+
+console.log(greater(10, 20));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">8. Create a function to calculate area of rectangle.</div>
+      <pre><code>function rectangleArea(length, width) {
+  return length * width;
+}
+
+console.log(rectangleArea(5, 4));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">9. Write a function that returns "Adult" if age ≥ 18 else "Minor".</div>
+      <pre><code>function checkAge(age) {
+  return age >= 18 ? "Adult" : "Minor";
+}
+
+console.log(checkAge(16));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">10. Create a function to reverse a string.</div>
+      <pre><code>function reverseString(str) {
+  return str.split("").reverse().join("");
+}
+
+console.log(reverseString("JavaScript"));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">11. Function expression for multiplication.</div>
+      <pre><code>const multiply = function(a, b) {
+  return a * b;
+};
+
+console.log(multiply(4, 5));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">12. Convert normal function into arrow function.</div>
+      <pre><code>const addNumbers = (a, b) => a + b;
+
+console.log(addNumbers(2, 3));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">13. Use rest operator to sum unlimited numbers.</div>
+      <pre><code>function sum(...numbers) {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+
+console.log(sum(1,2,3,4,5));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">14. Count vowels in a string.</div>
+      <pre><code>function countVowels(str) {
+  let count = 0;
+  let vowels = "aeiouAEIOU";
+
+  for (let char of str) {
+    if (vowels.includes(char)) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+console.log(countVowels("JavaScript"));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">15. Check if string is palindrome.</div>
+      <pre><code>function isPalindrome(str) {
+  let reversed = str.split("").reverse().join("");
+  return str === reversed;
+}
+
+console.log(isPalindrome("madam"));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">16. Callback function example using setTimeout.</div>
+      <pre><code>setTimeout(function() {
+  console.log("Executed after 2 seconds");
+}, 2000);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">17. Higher-order function that executes another function twice.</div>
+      <pre><code>function executeTwice(fn) {
+  fn();
+  fn();
+}
+
+executeTwice(() => console.log("Hello"));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">18. Function returning another function.</div>
+      <pre><code>function outer() {
+  return function inner() {
+    console.log("Inner function");
+  };
+}
+
+const result = outer();
+result();</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">19. Pure function for subtraction.</div>
+      <pre><code>function subtract(a, b) {
+  return a - b;
+}
+
+console.log(subtract(10, 5));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">20. Impure function using global variable.</div>
+      <pre><code>let count = 0;
+
+function increment() {
+  count++;
+}
+
+increment();
+console.log(count);</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Part 2 — Advanced Functions</h2>
+
+    <div class="qa">
+      <div class="question">21. Recursive factorial function.</div>
+      <pre><code>function factorial(n) {
+  if (n === 0) return 1;
+  return n * factorial(n - 1);
+}
+
+console.log(factorial(5));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">22. Recursive Fibonacci function.</div>
+      <pre><code>function fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.log(fibonacci(6));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">23. Power using recursion.</div>
+      <pre><code>function power(base, exp) {
+  if (exp === 0) return 1;
+  return base * power(base, exp - 1);
+}
+
+console.log(power(2, 4));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">24. IIFE example.</div>
+      <pre><code>(function() {
+  console.log("Executed");
+})();</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">25. Closure counter function.</div>
+      <pre><code>function counter() {
+  let count = 0;
+
+  return function() {
+    count++;
+    return count;
+  };
+}
+
+const c = counter();
+console.log(c());
+console.log(c());</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">26. Currying example.</div>
+      <pre><code>function add(a) {
+  return function(b) {
+    return a + b;
+  };
+}
+
+console.log(add(5)(10));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">27. Debounce function logic.</div>
+      <pre><code>function debounce(fn, delay) {
+  let timer;
+
+  return function() {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(), delay);
+  };
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">28. Throttle function logic.</div>
+      <pre><code>function throttle(fn, delay) {
+  let lastCall = 0;
+
+  return function() {
+    let now = Date.now();
+
+    if (now - lastCall >= delay) {
+      lastCall = now;
+      fn();
+    }
+  };
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">29. Function that executes only once.</div>
+      <pre><code>function once(fn) {
+  let called = false;
+
+  return function() {
+    if (!called) {
+      called = true;
+      fn();
+    }
+  };
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">30. Custom implementation of map.</div>
+      <pre><code>function customMap(arr, callback) {
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    result.push(callback(arr[i]));
+  }
+
+  return result;
+}
+
+console.log(customMap([1,2,3], x => x * 2));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">31. Custom implementation of filter.</div>
+      <pre><code>function customFilter(arr, callback) {
+  let result = [];
+
+  for (let item of arr) {
+    if (callback(item)) {
+      result.push(item);
+    }
+  }
+
+  return result;
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">32. Custom implementation of reduce.</div>
+      <pre><code>function customReduce(arr, callback, initial) {
+  let accumulator = initial;
+
+  for (let item of arr) {
+    accumulator = callback(accumulator, item);
+  }
+
+  return accumulator;
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">33. Custom forEach.</div>
+      <pre><code>function customForEach(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    callback(arr[i], i);
+  }
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">34. Explain output.</div>
+      <pre><code>function test() {
+    return;
+    console.log("Hello");
+}
+
+console.log(test());
+
+// Output: undefined
+// Code after return never executes.</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Part 3 — Arrays Basics</h2>
+
+    <div class="qa">
+      <div class="question">35. Create array of 5 fruits.</div>
+      <pre><code>const fruits = ["Apple", "Banana", "Mango", "Orange", "Grapes"];</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">36. Print first and last element.</div>
+      <pre><code>console.log(fruits[0]);
+console.log(fruits[fruits.length - 1]);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">37. Find array length.</div>
+      <pre><code>console.log(fruits.length);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">38. Add element using push.</div>
+      <pre><code>fruits.push("Pineapple");</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">39. Remove last element using pop.</div>
+      <pre><code>fruits.pop();</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">40. Add at beginning using unshift.</div>
+      <pre><code>fruits.unshift("Kiwi");</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">41. Remove first element using shift.</div>
+      <pre><code>fruits.shift();</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">42. Reverse an array.</div>
+      <pre><code>fruits.reverse();</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">43. Sort numbers ascending.</div>
+      <pre><code>const nums = [4,1,8,2];
+nums.sort((a,b) => a - b);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">44. Sort numbers descending.</div>
+      <pre><code>nums.sort((a,b) => b - a);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">45. Use splice to remove elements.</div>
+      <pre><code>nums.splice(1, 2);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">46. Use splice to insert elements.</div>
+      <pre><code>nums.splice(1, 0, 10, 20);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">47. Use slice to copy array.</div>
+      <pre><code>const copy = nums.slice();</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">48. Find index of element.</div>
+      <pre><code>console.log(nums.indexOf(8));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">49. Check if array contains value.</div>
+      <pre><code>console.log(nums.includes(4));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">50. Join array elements.</div>
+      <pre><code>console.log(fruits.join("."));</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Bonus Debugging Questions</h2>
+
+    <div class="qa">
+      <div class="question">101. What is the output?</div>
+      <pre><code>const arr = [1,2,3];
+arr[10] = 5;
+console.log(arr.length);
+
+// Output: 11</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">102. What is the output?</div>
+      <pre><code>console.log(typeof []);
+
+// Output: object</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">103. What is the output?</div>
+      <pre><code>console.log([] == false);
+
+// Output: true</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">104. What is the output?</div>
+      <pre><code>console.log([1,2] + [3,4]);
+
+// Output: "1,23,4"</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">105. What is the output?</div>
+      <pre><code>function x(a,b){
+   return a+b;
+}
+
+console.log(x(2));
+
+// Output: NaN</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Important JavaScript Differences</h2>
+
+    <div class="qa">
+      <div class="question">Difference between Function Declaration, Function Expression, Arrow Function</div>
+      <pre><code>// Function Declaration
+function greet() {}
+
+// Function Expression
+const greet2 = function() {};
+
+// Arrow Function
+const greet3 = () => {};</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Difference between slice and splice</div>
+      <pre><code>slice()  -> Copies array without changing original.
+splice() -> Changes original array.</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Difference between map, filter, reduce</div>
+      <pre><code>map()    -> Transforms elements.
+filter() -> Filters elements.
+reduce() -> Reduces array to single value.</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Difference between for...in and for...of</div>
+      <pre><code>for...in -> Iterates object keys/indexes.
+for...of -> Iterates values.</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Difference between shallow copy and deep copy</div>
+      <pre><code>Shallow Copy -> Copies first level only.
+Deep Copy    -> Copies nested objects completely.</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Real World Practice</h2>
+
+    <div class="qa">
+      <div class="question">OTP Generator</div>
+      <pre><code>function generateOTP() {
+  return Math.floor(100000 + Math.random() * 900000);
+}
+
+console.log(generateOTP());</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Password Strength Checker</div>
+      <pre><code>function checkPassword(password) {
+  if (password.length >= 8) {
+    return "Strong Password";
+  }
+  return "Weak Password";
+}
+
+console.log(checkPassword("abc12345"));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Authentication Validation</div>
+      <pre><code>function login(username, password) {
+  return username === "admin" && password === "1234";
+}
+
+console.log(login("admin", "1234"));</code></pre>
+    </div>
+  </div>
+
+    <div class="section">
+    <h2>Part 4 — Array Iteration Methods</h2>
+
+    <div class="qa">
+      <div class="question">56. Use forEach to print doubled numbers.</div>
+      <pre><code>const nums = [1,2,3];
+nums.forEach(num => console.log(num * 2));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">57. Use map to square numbers.</div>
+      <pre><code>const result = [1,2,3].map(num => num * num);
+console.log(result);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">58. Use filter to get even numbers.</div>
+      <pre><code>const even = [1,2,3,4].filter(num => num % 2 === 0);
+console.log(even);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">59. Use reduce to calculate sum.</div>
+      <pre><code>const sum = [1,2,3,4].reduce((a,b) => a + b, 0);
+console.log(sum);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">60. Flatten nested arrays.</div>
+      <pre><code>const arr = [1,[2,3],[4,5]];
+console.log(arr.flat());</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">61. Remove duplicates using Set.</div>
+      <pre><code>const nums = [1,2,2,3,4,4];
+const unique = [...new Set(nums)];
+console.log(unique);</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Part 5 — Objects Basics</h2>
+
+    <div class="qa">
+      <div class="question">76. Create object for student.</div>
+      <pre><code>const student = {
+  name: "Ayush",
+  age: 20,
+  course: "JavaScript"
+};</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">77. Access properties using dot notation.</div>
+      <pre><code>console.log(student.name);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">78. Access properties using bracket notation.</div>
+      <pre><code>console.log(student["age"]);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">79. Add new property dynamically.</div>
+      <pre><code>student.city = "Bangalore";</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">80. Update existing property.</div>
+      <pre><code>student.age = 21;</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">81. Delete a property.</div>
+      <pre><code>delete student.course;</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">82. Create object method.</div>
+      <pre><code>const car = {
+  brand: "Toyota",
+  start() {
+    console.log("Car started");
+  }
+};</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">83. Use this keyword.</div>
+      <pre><code>const user = {
+  name: "Ayush",
+  greet() {
+    console.log(`Hello ${this.name}`);
+  }
+};</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Part 6 — Advanced Objects + Logic</h2>
+
+    <div class="qa">
+      <div class="question">91. Use Object.keys()</div>
+      <pre><code>console.log(Object.keys(student));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">92. Use Object.values()</div>
+      <pre><code>console.log(Object.values(student));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">93. Use Object.entries()</div>
+      <pre><code>console.log(Object.entries(student));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">94. Loop through object using for...in</div>
+      <pre><code>for (let key in student) {
+  console.log(key, student[key]);
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">95. Freeze object.</div>
+      <pre><code>Object.freeze(student);
+student.name = "Rahul";
+console.log(student);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">96. Seal object.</div>
+      <pre><code>Object.seal(student);
+student.age = 30;</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">97. Find user with highest age.</div>
+      <pre><code>const users = [
+  {name:"A", age:20},
+  {name:"B", age:25}
+];
+
+const oldest = users.reduce((max,user) =>
+  user.age > max.age ? user : max
+);
+
+console.log(oldest);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">98. Mini TODO App Logic.</div>
+      <pre><code>let todos = [];
+
+function addTodo(task) {
+  todos.push({ task, done:false });
+}
+
+addTodo("Learn JavaScript");
+console.log(todos);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">99. Shopping cart add item.</div>
+      <pre><code>let cart = [];
+
+function addItem(name, price) {
+  cart.push({name, price});
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">100. Calculate cart total.</div>
+      <pre><code>function total() {
+  return cart.reduce((sum,item) => sum + item.price, 0);
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Ultra Advanced Practice</h2>
+
+    <div class="qa">
+      <div class="question">Deep Clone Function</div>
+      <pre><code>function deepClone(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Function Composition Utility</div>
+      <pre><code>const compose = (f, g) => x => f(g(x));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Calculator using Objects</div>
+      <pre><code>const calculator = {
+  add(a,b){ return a+b; },
+  sub(a,b){ return a-b; },
+  mul(a,b){ return a*b; }
+};</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Scenario Based Questions</h2>
+
+    <div class="qa">
+      <div class="question">Return only active users.</div>
+      <pre><code>const activeUsers = users.filter(user => user.active);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Find second largest number.</div>
+      <pre><code>const arr = [1,5,8,2,9];
+arr.sort((a,b)=>b-a);
+console.log(arr[1]);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Check if two strings are anagrams.</div>
+      <pre><code>function isAnagram(a,b){
+  return a.split('').sort().join('') ===
+         b.split('').sort().join('');
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Logic Building Questions</h2>
+
+    <div class="qa">
+      <div class="question">Rotate array by k positions.</div>
+      <pre><code>function rotateArray(arr, k) {
+  k = k % arr.length;
+  return [...arr.slice(-k), ...arr.slice(0, -k)];
+}
+
+console.log(rotateArray([1,2,3,4,5], 2));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Find frequency of characters in string.</div>
+      <pre><code>function frequency(str) {
+  let obj = {};
+
+  for (let char of str) {
+    obj[char] = (obj[char] || 0) + 1;
+  }
+
+  return obj;
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Find longest word in sentence.</div>
+      <pre><code>function longestWord(sentence) {
+  return sentence
+    .split(' ')
+    .reduce((longest, word) =>
+      word.length > longest.length ? word : longest
+    );
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Capitalize first letter of every word.</div>
+      <pre><code>function capitalize(sentence) {
+  return sentence
+    .split(' ')
+    .map(word => word[0].toUpperCase() + word.slice(1))
+    .join(' ');
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Remove falsy values from array.</div>
+      <pre><code>const values = [0, 1, false, 2, '', 3];
+const filtered = values.filter(Boolean);
+console.log(filtered);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Convert array into object.</div>
+      <pre><code>const arr = [['name', 'Ayush'], ['age', 20]];
+const obj = Object.fromEntries(arr);
+console.log(obj);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Convert object into array.</div>
+      <pre><code>const user = {name:'Ayush', age:20};
+console.log(Object.entries(user));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Find duplicate elements.</div>
+      <pre><code>const nums = [1,2,2,3,4,4];
+const duplicates = nums.filter((item,index) =>
+  nums.indexOf(item) !== index
+);
+
+console.log([...new Set(duplicates)]);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Merge two sorted arrays.</div>
+      <pre><code>function merge(a,b) {
+  return [...a, ...b].sort((x,y) => x-y);
+}
+
+console.log(merge([1,3,5],[2,4,6]));</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Advanced Functional Programming</h2>
+
+    <div class="qa">
+      <div class="question">Implement compose function.</div>
+      <pre><code>const compose = (...fns) => x =>
+  fns.reduceRight((value, fn) => fn(value), x);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Implement pipe function.</div>
+      <pre><code>const pipe = (...fns) => x =>
+  fns.reduce((value, fn) => fn(value), x);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Custom Event Emitter.</div>
+      <pre><code>class EventEmitter {
+  constructor() {
+    this.events = {};
+  }
+
+  on(event, callback) {
+    this.events[event] = this.events[event] || [];
+    this.events[event].push(callback);
+  }
+
+  emit(event) {
+    if (this.events[event]) {
+      this.events[event].forEach(fn => fn());
+    }
+  }
+}</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Retry mechanism function.</div>
+      <pre><code>async function retry(fn, times) {
+  for (let i = 0; i < times; i++) {
+    try {
+      return await fn();
+    } catch (err) {
+      console.log('Retrying...');
+    }
+  }
+}</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Final Challenge Questions</h2>
+
+    <div class="qa">
+      <div class="question">Build Notes App Logic.</div>
+      <pre><code>let notes = [];
+
+function addNote(title) {
+  notes.push(title);
+}
+
+addNote('JavaScript Notes');
+console.log(notes);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Student Dashboard Logic.</div>
+      <pre><code>const students = [
+  {name:'Ayush', marks:90},
+  {name:'Rahul', marks:80}
+];
+
+const average = students.reduce((sum,s)=>sum+s.marks,0)/students.length;
+console.log(average);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Quiz App Data Handling.</div>
+      <pre><code>const questions = [
+  {
+    question:'2+2?',
+    answer:'4'
+  }
+];</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Mini Netflix Watchlist.</div>
+      <pre><code>let watchlist = [];
+
+function addMovie(movie) {
+  watchlist.push(movie);
+}
+
+addMovie('Stranger Things');
+console.log(watchlist);</code></pre>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Additional Interview & Advanced Questions</h2>
+
+    <div class="qa">
+      <div class="question">Check whether two objects are equal.</div>
+      <pre><code>function isEqual(obj1, obj2) {
+  return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+
+console.log(isEqual({a:1}, {a:1}));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Find missing number in array.</div>
+      <pre><code>function missingNumber(arr, n) {
+  const expected = (n * (n + 1)) / 2;
+  const actual = arr.reduce((a,b) => a+b, 0);
+  return expected - actual;
+}
+
+console.log(missingNumber([1,2,4,5],5));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Calculate total revenue from orders.</div>
+      <pre><code>const orders = [
+  {price:100},
+  {price:200}
+];
+
+const revenue = orders.reduce((sum,o)=>sum+o.price,0);
+console.log(revenue);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Group users by age.</div>
+      <pre><code>const users = [
+  {name:'A', age:20},
+  {name:'B', age:20},
+  {name:'C', age:25}
+];
+
+const grouped = users.reduce((acc,user)=>{
+  acc[user.age] = acc[user.age] || [];
+  acc[user.age].push(user);
+  return acc;
+}, {});
+
+console.log(grouped);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Find total price of shopping cart.</div>
+      <pre><code>const cart = [
+  {item:'Phone', price:500},
+  {item:'Mouse', price:50}
+];
+
+const total = cart.reduce((sum,item)=>sum+item.price,0);
+console.log(total);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Sort array of objects by age.</div>
+      <pre><code>const people = [
+  {name:'A', age:30},
+  {name:'B', age:20}
+];
+
+people.sort((a,b)=>a.age-b.age);
+console.log(people);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Chain filter and map.</div>
+      <pre><code>const result = [1,2,3,4]
+  .filter(num => num % 2 === 0)
+  .map(num => num * 10);
+
+console.log(result);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Difference between map and forEach.</div>
+      <pre><code>map() returns a new array.
+forEach() does not return a new array.</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Find maximum using Math.max.</div>
+      <pre><code>const nums = [1,5,9,3];
+console.log(Math.max(...nums));</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Swap variables using destructuring.</div>
+      <pre><code>let a = 10;
+let b = 20;
+
+[a,b] = [b,a];
+console.log(a,b);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Copy array using spread operator.</div>
+      <pre><code>const arr = [1,2,3];
+const copy = [...arr];</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Merge arrays using spread operator.</div>
+      <pre><code>const a = [1,2];
+const b = [3,4];
+
+const merged = [...a, ...b];
+console.log(merged);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Nested object example.</div>
+      <pre><code>const person = {
+  name:'Ayush',
+  address:{
+    city:'Bangalore',
+    pin:560001
+  }
+};</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Access deeply nested property.</div>
+      <pre><code>console.log(person.address.city);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Destructure object properties.</div>
+      <pre><code>const {name, age} = {name:'Ayush', age:20};
+console.log(name, age);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Rename variables while destructuring.</div>
+      <pre><code>const {name:userName} = {name:'Ayush'};
+console.log(userName);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Default values in destructuring.</div>
+      <pre><code>const {country='India'} = {};
+console.log(country);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Copy object using spread operator.</div>
+      <pre><code>const obj = {a:1,b:2};
+const copy = {...obj};</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Merge two objects.</div>
+      <pre><code>const obj1 = {a:1};
+const obj2 = {b:2};
+
+const merged = {...obj1, ...obj2};</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Attendance management logic.</div>
+      <pre><code>const attendance = [];
+
+function markAttendance(name, status) {
+  attendance.push({name,status});
+}
+
+markAttendance('Ayush', 'Present');
+console.log(attendance);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Leaderboard system.</div>
+      <pre><code>const players = [
+  {name:'A', score:100},
+  {name:'B', score:150}
+];
+
+players.sort((a,b)=>b.score-a.score);
+console.log(players);</code></pre>
+    </div>
+
+    <div class="qa">
+      <div class="question">Inventory management system.</div>
+      <pre><code>let inventory = [];
+
+function addProduct(name, quantity) {
+  inventory.push({name, quantity});
+}
+
+addProduct('Keyboard', 10);
+console.log(inventory);</code></pre>
+    </div>
+  </div>
+
+<footer>
+    <p>Created for JavaScript Practice • Beginner to Advanced</p>
+  </footer>
+</body>
+</html>
