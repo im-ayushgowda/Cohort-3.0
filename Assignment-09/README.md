@@ -2,6 +2,12 @@
 
 A pixel-perfect 1:1 frontend clone of [twoleavestea.com](https://www.twoleavestea.com), built with pure HTML, CSS, and vanilla JavaScript.
 
+## 🌐 Live Demo
+
+👉 [View Live Site](https://im-ayushgowda.github.io/Cohort-3.0/Assignment-09/)
+
+---
+
 ---
 
 ## 📁 Project Structure
