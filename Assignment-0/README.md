@@ -3,7 +3,7 @@
 A responsive Microsoft landing page clone built using HTML and CSS.
 
 ## 🚀 Live Demo
-https://im-ayushgowda.github.io/Microsoft-Landing-Page-Cohort3.0/
+[https://im-ayushgowda.github.io/Microsoft-Landing-Page-Cohort3.0/](https://im-ayushgowda.github.io/Cohort-3.0/Assignment-0/)
 
 ## 📌 Features
 - Responsive layout
