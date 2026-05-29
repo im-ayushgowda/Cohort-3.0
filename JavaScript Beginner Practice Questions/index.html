@@ -299,7 +299,7 @@
   <h1>Master JavaScript with<br><em>200+ Q&amp;A</em></h1>
   <p>Fundamentals, Functions, Arrays, Objects, Advanced Patterns — everything from beginner to interview-ready.</p>
   <div class="stats">
-    <div class="stat"><div class="stat-n">234+</div><div class="stat-l">Questions</div></div>
+    <div class="stat"><div class="stat-n">310</div><div class="stat-l">Questions</div></div>
     <div class="stat"><div class="stat-n">9</div><div class="stat-l">Parts</div></div>
     <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Answered</div></div>
   </div>
@@ -317,6 +317,9 @@
   <button class="pill" data-c="3" onclick="filterSection('basics',this)">JS Basics</button>
   <button class="pill" data-c="5" onclick="filterSection('basics2',this)">JS Basics+</button>
   <button class="pill" data-c="4" onclick="filterSection('advanced2',this)">Ultra Advanced</button>
+  <button class="pill" data-c="3" onclick="filterSection('arrays-deep',this)">Arrays Deep</button>
+  <button class="pill" data-c="4" onclick="filterSection('sheet3',this)">Sheet 3 — Methods</button>
+  <button class="pill" data-c="5" onclick="filterSection('sheet4',this)">Sheet 4 — Objects</button>
 </div>
 
 <main id="main">
@@ -5015,6 +5018,1066 @@ console.<span class="fn">log</span>(withInserted); <span class="cm">// [1, 2, 3,
     </div>
   </div>
 
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SHEET 3 — forEach, map, filter, reduce, find,
+               findIndex, some, every
+═══════════════════════════════════════════════════ -->
+<div class="section" id="sheet3">
+  <div class="section-header">
+    <span class="section-num">SHEET 3</span>
+    <h2 class="section-title">Array Methods — forEach, map, filter, reduce, find, findIndex, some, every</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- 1. forEach -->
+  <div class="subsection-label">🔁 1. forEach()</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="3">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-1I</span>
+        <span class="q-text"><strong>Intermediate:</strong> Print each price from the array with "₹" before it.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> prices = [<span class="num">100</span>, <span class="num">250</span>, <span class="num">399</span>, <span class="num">499</span>];
+
+prices.<span class="fn">forEach</span>(<span class="kw">function</span>(price) {
+  console.<span class="fn">log</span>(<span class="str">"₹"</span> + price);
+});
+<span class="cm">// ₹100</span>
+<span class="cm">// ₹250</span>
+<span class="cm">// ₹399</span>
+<span class="cm">// ₹499</span>
+
+<span class="cm">// Arrow function version:</span>
+prices.<span class="fn">forEach</span>(price => console.<span class="fn">log</span>(<span class="str">`₹${price}`</span>));</code></pre>
+        <div class="note"><strong>Key:</strong> <code>forEach()</code> runs once per element. It never returns a value — use it only for side effects like logging.</div>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-1H</span>
+        <span class="q-text"><strong>Hard:</strong> Loop through students and print "Pass" if marks &gt; 50, else "Fail".</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> students = [
+  { name: <span class="str">"Anubhav"</span>, marks: <span class="num">85</span> },
+  { name: <span class="str">"Rahul"</span>,   marks: <span class="num">42</span> },
+  { name: <span class="str">"Aman"</span>,    marks: <span class="num">90</span> },
+];
+
+students.<span class="fn">forEach</span>(student => {
+  <span class="kw">const</span> result = student.marks > <span class="num">50</span> ? <span class="str">"Pass"</span> : <span class="str">"Fail"</span>;
+  console.<span class="fn">log</span>(<span class="str">`${student.name} - ${result}`</span>);
+});
+<span class="cm">// Anubhav - Pass</span>
+<span class="cm">// Rahul - Fail</span>
+<span class="cm">// Aman - Pass</span></code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 2. map -->
+  <div class="subsection-label" style="margin-top:24px">🗺️ 2. map()</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="3">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-2I</span>
+        <span class="q-text"><strong>Intermediate:</strong> Convert all names to uppercase.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> names = [<span class="str">"anubhav"</span>, <span class="str">"rahul"</span>, <span class="str">"aman"</span>];
+
+<span class="kw">let</span> upper = names.<span class="fn">map</span>(name => name.<span class="fn">toUpperCase</span>());
+console.<span class="fn">log</span>(upper);
+<span class="cm">// ["ANUBHAV", "RAHUL", "AMAN"]</span>
+
+<span class="cm">// map() returns a NEW array — original is unchanged:</span>
+console.<span class="fn">log</span>(names); <span class="cm">// ["anubhav","rahul","aman"]</span></code></pre>
+        <div class="note"><strong>map() vs forEach():</strong> <code>map()</code> returns a new transformed array. <code>forEach()</code> returns nothing. Use <code>map()</code> when you need a new array.</div>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-2H</span>
+        <span class="q-text"><strong>Hard:</strong> Add a <code>discountPrice</code> (10% off) property to each product object.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> products = [
+  { name: <span class="str">"Laptop"</span>, price: <span class="num">50000</span> },
+  { name: <span class="str">"Phone"</span>,  price: <span class="num">20000</span> },
+];
+
+<span class="kw">let</span> withDiscount = products.<span class="fn">map</span>(product => {
+  <span class="kw">return</span> {
+    ...product,
+    discountPrice: product.price - (product.price * <span class="num">10</span> / <span class="num">100</span>)
+  };
+});
+
+console.<span class="fn">log</span>(withDiscount);
+<span class="cm">// [</span>
+<span class="cm">//   { name: "Laptop", price: 50000, discountPrice: 45000 },</span>
+<span class="cm">//   { name: "Phone",  price: 20000, discountPrice: 18000 }</span>
+<span class="cm">// ]</span>
+
+<span class="cm">// Using shorthand with spread:</span>
+<span class="kw">const</span> discounted = products.<span class="fn">map</span>(p => ({
+  ...p,
+  discountPrice: p.price * <span class="num">0.9</span>
+}));</code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 3. filter -->
+  <div class="subsection-label" style="margin-top:24px">🔍 3. filter()</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="3">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-3I</span>
+        <span class="q-text"><strong>Intermediate:</strong> Filter all even numbers from the array.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> nums = [<span class="num">1</span>,<span class="num">2</span>,<span class="num">3</span>,<span class="num">4</span>,<span class="num">5</span>,<span class="num">6</span>,<span class="num">7</span>,<span class="num">8</span>];
+
+<span class="kw">let</span> evens = nums.<span class="fn">filter</span>(n => n % <span class="num">2</span> === <span class="num">0</span>);
+console.<span class="fn">log</span>(evens); <span class="cm">// [2, 4, 6, 8]</span>
+
+<span class="cm">// filter() keeps element when callback returns true</span>
+<span class="cm">// Odd numbers:</span>
+<span class="kw">let</span> odds = nums.<span class="fn">filter</span>(n => n % <span class="num">2</span> !== <span class="num">0</span>);
+console.<span class="fn">log</span>(odds); <span class="cm">// [1, 3, 5, 7]</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-3H</span>
+        <span class="q-text"><strong>Hard:</strong> Return only active users from the array of user objects.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> users = [
+  { name: <span class="str">"Anubhav"</span>, active: <span class="kw">true</span>  },
+  { name: <span class="str">"Rahul"</span>,   active: <span class="kw">false</span> },
+  { name: <span class="str">"Aman"</span>,    active: <span class="kw">true</span>  },
+];
+
+<span class="kw">let</span> activeUsers = users.<span class="fn">filter</span>(user => user.active === <span class="kw">true</span>);
+console.<span class="fn">log</span>(activeUsers);
+<span class="cm">// [{name:"Anubhav",active:true},{name:"Aman",active:true}]</span>
+
+<span class="cm">// Shorter — truthy check:</span>
+<span class="kw">let</span> active = users.<span class="fn">filter</span>(user => user.active);
+console.<span class="fn">log</span>(active.<span class="fn">map</span>(u => u.name)); <span class="cm">// ["Anubhav","Aman"]</span></code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 4. reduce -->
+  <div class="subsection-label" style="margin-top:24px">➕ 4. reduce()</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="3">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-4I</span>
+        <span class="q-text"><strong>Intermediate:</strong> Find the total sum of an array using reduce().</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> nums = [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>, <span class="num">40</span>];
+
+<span class="kw">let</span> total = nums.<span class="fn">reduce</span>((accumulator, current) => {
+  <span class="kw">return</span> accumulator + current;
+}, <span class="num">0</span>); <span class="cm">// 0 is the initial value</span>
+
+console.<span class="fn">log</span>(total); <span class="cm">// 100</span>
+
+<span class="cm">// Step by step:</span>
+<span class="cm">// acc=0,  cur=10 → 10</span>
+<span class="cm">// acc=10, cur=20 → 30</span>
+<span class="cm">// acc=30, cur=30 → 60</span>
+<span class="cm">// acc=60, cur=40 → 100</span>
+
+<span class="cm">// Shorthand:</span>
+<span class="kw">const</span> sum = nums.<span class="fn">reduce</span>((acc, cur) => acc + cur, <span class="num">0</span>);</code></pre>
+        <div class="note"><strong>reduce(callback, initialValue):</strong> The accumulator holds the running total. Always set an initial value (0 for sums) to avoid bugs with empty arrays.</div>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-4H</span>
+        <span class="q-text"><strong>Hard:</strong> Count frequency of elements in an array using reduce().</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> fruits = [<span class="str">"apple"</span>, <span class="str">"banana"</span>, <span class="str">"apple"</span>, <span class="str">"orange"</span>, <span class="str">"banana"</span>, <span class="str">"apple"</span>];
+
+<span class="kw">let</span> frequency = fruits.<span class="fn">reduce</span>((acc, fruit) => {
+  <span class="kw">if</span> (acc[fruit]) {
+    acc[fruit]++;           <span class="cm">// already exists — increment</span>
+  } <span class="kw">else</span> {
+    acc[fruit] = <span class="num">1</span>;         <span class="cm">// first occurrence</span>
+  }
+  <span class="kw">return</span> acc;
+}, {}); <span class="cm">// initial value is empty object</span>
+
+console.<span class="fn">log</span>(frequency);
+<span class="cm">// { apple: 3, banana: 2, orange: 1 }</span>
+
+<span class="cm">// Shorter version:</span>
+<span class="kw">const</span> freq = fruits.<span class="fn">reduce</span>((acc, item) => {
+  acc[item] = (acc[item] || <span class="num">0</span>) + <span class="num">1</span>;
+  <span class="kw">return</span> acc;
+}, {});</code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 5. find -->
+  <div class="subsection-label" style="margin-top:24px">🎯 5. find()</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="3">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-5I</span>
+        <span class="q-text"><strong>Intermediate:</strong> Find the first number greater than 50 in the array.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> nums = [<span class="num">20</span>, <span class="num">35</span>, <span class="num">60</span>, <span class="num">80</span>];
+
+<span class="kw">let</span> result = nums.<span class="fn">find</span>(n => n > <span class="num">50</span>);
+console.<span class="fn">log</span>(result); <span class="cm">// 60  ← stops at FIRST match</span>
+
+<span class="cm">// find() vs filter():</span>
+<span class="cm">// find()   → returns ONE element (or undefined)</span>
+<span class="cm">// filter() → returns ALL matching elements (array)</span>
+
+<span class="kw">let</span> notFound = nums.<span class="fn">find</span>(n => n > <span class="num">100</span>);
+console.<span class="fn">log</span>(notFound); <span class="cm">// undefined</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-5H</span>
+        <span class="q-text"><strong>Hard:</strong> Find the user object with username "admin".</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> users = [
+  { username: <span class="str">"rahul"</span> },
+  { username: <span class="str">"admin"</span> },
+  { username: <span class="str">"aman"</span>  }
+];
+
+<span class="kw">let</span> adminUser = users.<span class="fn">find</span>(user => user.username === <span class="str">"admin"</span>);
+console.<span class="fn">log</span>(adminUser); <span class="cm">// { username: "admin" }</span>
+
+<span class="cm">// Always check if found before using:</span>
+<span class="kw">if</span> (adminUser) {
+  console.<span class="fn">log</span>(<span class="str">"Admin found:"</span>, adminUser.username);
+} <span class="kw">else</span> {
+  console.<span class="fn">log</span>(<span class="str">"No admin user"</span>);
+}</code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 6. findIndex -->
+  <div class="subsection-label" style="margin-top:24px">🔢 6. findIndex()</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="3">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-6I</span>
+        <span class="q-text"><strong>Intermediate:</strong> Find the index of number 90 in the array.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> nums = [<span class="num">10</span>, <span class="num">40</span>, <span class="num">90</span>, <span class="num">50</span>];
+
+<span class="kw">let</span> idx = nums.<span class="fn">findIndex</span>(n => n === <span class="num">90</span>);
+console.<span class="fn">log</span>(idx); <span class="cm">// 2</span>
+
+<span class="cm">// Returns -1 if not found:</span>
+console.<span class="fn">log</span>(nums.<span class="fn">findIndex</span>(n => n === <span class="num">999</span>)); <span class="cm">// -1</span>
+
+<span class="cm">// findIndex vs indexOf:</span>
+<span class="cm">// indexOf(90)         → simple value check</span>
+<span class="cm">// findIndex(n => ...) → complex condition check</span>
+console.<span class="fn">log</span>(nums.<span class="fn">indexOf</span>(<span class="num">90</span>)); <span class="cm">// 2 (same result for primitives)</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-6H</span>
+        <span class="q-text"><strong>Hard:</strong> Find the index of the first failed student (marks &lt; 40).</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> students = [
+  { name: <span class="str">"A"</span>, marks: <span class="num">90</span> },
+  { name: <span class="str">"B"</span>, marks: <span class="num">30</span> },
+  { name: <span class="str">"C"</span>, marks: <span class="num">70</span> },
+];
+
+<span class="kw">let</span> failIdx = students.<span class="fn">findIndex</span>(s => s.marks < <span class="num">40</span>);
+console.<span class="fn">log</span>(failIdx); <span class="cm">// 1  (student "B")</span>
+
+<span class="cm">// Use the index to access the student:</span>
+<span class="kw">if</span> (failIdx !== -<span class="num">1</span>) {
+  console.<span class="fn">log</span>(<span class="str">`First fail: ${students[failIdx].name}`</span>); <span class="cm">// "B"</span>
+} <span class="kw">else</span> {
+  console.<span class="fn">log</span>(<span class="str">"All students passed!"</span>);
+}</code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 7. some -->
+  <div class="subsection-label" style="margin-top:24px">✅ 7. some()</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="3">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-7I</span>
+        <span class="q-text"><strong>Intermediate:</strong> Check if any number in the array is negative.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> nums = [<span class="num">10</span>, <span class="num">20</span>, -<span class="num">5</span>, <span class="num">40</span>];
+
+<span class="kw">let</span> hasNegative = nums.<span class="fn">some</span>(n => n < <span class="num">0</span>);
+console.<span class="fn">log</span>(hasNegative); <span class="cm">// true</span>
+
+<span class="kw">let</span> allPositive = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>];
+console.<span class="fn">log</span>(allPositive.<span class="fn">some</span>(n => n < <span class="num">0</span>)); <span class="cm">// false</span></code></pre>
+        <div class="note"><strong>some():</strong> Returns <code>true</code> if AT LEAST ONE element matches. Stops checking as soon as it finds a match — efficient!</div>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-7H</span>
+        <span class="q-text"><strong>Hard:</strong> Check if any product is out of stock (stock === 0).</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> products = [
+  { name: <span class="str">"Laptop"</span>, stock: <span class="num">5</span> },
+  { name: <span class="str">"Phone"</span>,  stock: <span class="num">0</span> },
+];
+
+<span class="kw">let</span> outOfStock = products.<span class="fn">some</span>(p => p.stock === <span class="num">0</span>);
+console.<span class="fn">log</span>(outOfStock); <span class="cm">// true</span>
+
+<span class="cm">// Find which products are out of stock:</span>
+<span class="kw">const</span> outItems = products.<span class="fn">filter</span>(p => p.stock === <span class="num">0</span>).<span class="fn">map</span>(p => p.name);
+console.<span class="fn">log</span>(<span class="str">`Out of stock: ${outItems.join(", ")}`</span>); <span class="cm">// "Phone"</span>
+
+<span class="cm">// Practical: show warning</span>
+<span class="kw">if</span> (outOfStock) {
+  console.<span class="fn">log</span>(<span class="str">"⚠️ Warning: Some products are out of stock!"</span>);
+}</code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 8. every -->
+  <div class="subsection-label" style="margin-top:24px">☑️ 8. every()</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="3">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-8I</span>
+        <span class="q-text"><strong>Intermediate:</strong> Check if all numbers in the array are positive.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> nums = [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>, <span class="num">40</span>];
+
+<span class="kw">let</span> allPositive = nums.<span class="fn">every</span>(n => n > <span class="num">0</span>);
+console.<span class="fn">log</span>(allPositive); <span class="cm">// true</span>
+
+<span class="kw">let</span> mixed = [<span class="num">10</span>, -<span class="num">5</span>, <span class="num">20</span>];
+console.<span class="fn">log</span>(mixed.<span class="fn">every</span>(n => n > <span class="num">0</span>)); <span class="cm">// false</span></code></pre>
+        <div class="note"><strong>every():</strong> Returns <code>true</code> only if ALL elements match. Returns <code>false</code> as soon as ONE fails. Opposite of <code>some()</code>.</div>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S3-8H</span>
+        <span class="q-text"><strong>Hard:</strong> Check if all students passed (marks &gt;= 40).</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">let</span> students = [
+  { name: <span class="str">"A"</span>, marks: <span class="num">80</span> },
+  { name: <span class="str">"B"</span>, marks: <span class="num">45</span> },
+  { name: <span class="str">"C"</span>, marks: <span class="num">60</span> },
+];
+
+<span class="kw">let</span> allPassed = students.<span class="fn">every</span>(s => s.marks >= <span class="num">40</span>);
+console.<span class="fn">log</span>(allPassed); <span class="cm">// true  (all >= 40)</span>
+
+<span class="cm">// Test with a failing student:</span>
+<span class="kw">let</span> students2 = [
+  { name: <span class="str">"A"</span>, marks: <span class="num">80</span> },
+  { name: <span class="str">"B"</span>, marks: <span class="num">35</span> }, <span class="cm">// fails!</span>
+  { name: <span class="str">"C"</span>, marks: <span class="num">60</span> },
+];
+console.<span class="fn">log</span>(students2.<span class="fn">every</span>(s => s.marks >= <span class="num">40</span>)); <span class="cm">// false</span>
+
+<span class="cm">// Practical usage:</span>
+<span class="kw">if</span> (allPassed) {
+  console.<span class="fn">log</span>(<span class="str">"🎉 All students passed!"</span>);
+} <span class="kw">else</span> {
+  <span class="kw">const</span> fails = students.<span class="fn">filter</span>(s => s.marks < <span class="num">40</span>);
+  console.<span class="fn">log</span>(<span class="str">`Failed students: ${fails.<span class="fn">map</span>(s => s.name).<span class="fn">join</span>(", ")}`</span>);
+}</code></pre>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SHEET 4 — Objects (Beginner → Problem Solving → Hard)
+═══════════════════════════════════════════════════ -->
+<div class="section" id="sheet4">
+  <div class="section-header">
+    <span class="section-num">SHEET 4</span>
+    <h2 class="section-title">Objects — Beginner to Hard (Q1–Q20)</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Beginner -->
+  <div class="subsection-label">🟢 Beginner Level — Q1 to Q5</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="5">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q1</span>
+        <span class="q-text">Create an object for a student with name, age, course. Print all values.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> student = {
+  name:   <span class="str">"Anubhav"</span>,
+  age:    <span class="num">20</span>,
+  course: <span class="str">"JavaScript"</span>
+};
+
+console.<span class="fn">log</span>(student.name);    <span class="cm">// "Anubhav"</span>
+console.<span class="fn">log</span>(student.age);     <span class="cm">// 20</span>
+console.<span class="fn">log</span>(student.course);  <span class="cm">// "JavaScript"</span>
+
+<span class="cm">// Print all values at once:</span>
+console.<span class="fn">log</span>(Object.<span class="fn">values</span>(student)); <span class="cm">// ["Anubhav", 20, "JavaScript"]</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="5">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q2</span>
+        <span class="q-text">Access <code>brand</code> and <code>model</code> using both dot notation and bracket notation.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> car = {
+  brand: <span class="str">"BMW"</span>,
+  model: <span class="str">"M4"</span>,
+  year:  <span class="num">2022</span>
+};
+
+<span class="cm">// Dot notation (most common):</span>
+console.<span class="fn">log</span>(car.brand);       <span class="cm">// "BMW"</span>
+console.<span class="fn">log</span>(car.model);       <span class="cm">// "M4"</span>
+
+<span class="cm">// Bracket notation (useful for dynamic keys):</span>
+console.<span class="fn">log</span>(car[<span class="str">"brand"</span>]);   <span class="cm">// "BMW"</span>
+console.<span class="fn">log</span>(car[<span class="str">"model"</span>]);   <span class="cm">// "M4"</span>
+
+<span class="cm">// When to use brackets — dynamic key from variable:</span>
+<span class="kw">let</span> key = <span class="str">"year"</span>;
+console.<span class="fn">log</span>(car[key]);        <span class="cm">// 2022</span></code></pre>
+        <div class="note"><strong>Dot vs Bracket:</strong> Use dot for known keys. Use bracket when the key is stored in a variable or has special characters.</div>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="5">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q3</span>
+        <span class="q-text">Change the age of a user from 20 to 25.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> user = {
+  name: <span class="str">"Anubhav"</span>,
+  age:  <span class="num">20</span>
+};
+
+console.<span class="fn">log</span>(user.age); <span class="cm">// 20</span>
+
+user.age = <span class="num">25</span>;          <span class="cm">// update the property</span>
+console.<span class="fn">log</span>(user.age); <span class="cm">// 25</span>
+
+<span class="cm">// Note: const doesn't prevent property changes,</span>
+<span class="cm">// only prevents reassigning the whole object.</span>
+<span class="cm">// user = {} ← this would throw an error!</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="5">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q4</span>
+        <span class="q-text">Add a new property <code>isAdmin: true</code> to an existing object.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> user = {
+  name: <span class="str">"Anubhav"</span>,
+  age:  <span class="num">20</span>
+};
+
+user.isAdmin = <span class="kw">true</span>;  <span class="cm">// add new property dynamically</span>
+console.<span class="fn">log</span>(user);
+<span class="cm">// { name: "Anubhav", age: 20, isAdmin: true }</span>
+
+<span class="cm">// Add multiple properties at once using spread:</span>
+<span class="kw">const</span> updatedUser = { ...user, role: <span class="str">"admin"</span>, lastLogin: <span class="str">"today"</span> };
+console.<span class="fn">log</span>(updatedUser);</code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="5">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q5</span>
+        <span class="q-text">Remove the <code>password</code> property from an object using <code>delete</code>.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> account = {
+  username: <span class="str">"john"</span>,
+  password: <span class="str">"12345"</span>
+};
+
+<span class="kw">delete</span> account.password;
+console.<span class="fn">log</span>(account); <span class="cm">// { username: "john" }</span>
+console.<span class="fn">log</span>(account.password); <span class="cm">// undefined</span>
+
+<span class="cm">// Safe way — create new object without the property:</span>
+<span class="kw">const</span> { password, ...safe } = account;
+console.<span class="fn">log</span>(safe); <span class="cm">// { username: "john" }</span></code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Intermediate -->
+  <div class="subsection-label" style="margin-top:24px">🟡 Intermediate Level — Q6 to Q10</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="5">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q6</span>
+        <span class="q-text">Write a function that returns how many properties an object has.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">function</span> <span class="fn">countProperties</span>(obj) {
+  <span class="kw">return</span> Object.<span class="fn">keys</span>(obj).length;
+}
+
+console.<span class="fn">log</span>(<span class="fn">countProperties</span>({ a:<span class="num">1</span>, b:<span class="num">2</span>, c:<span class="num">3</span> })); <span class="cm">// 3</span>
+console.<span class="fn">log</span>(<span class="fn">countProperties</span>({}));               <span class="cm">// 0</span>
+console.<span class="fn">log</span>(<span class="fn">countProperties</span>({ x:<span class="num">10</span> }));         <span class="cm">// 1</span>
+
+<span class="cm">// Object.keys() returns array of all keys:</span>
+<span class="cm">// Object.keys({a:1,b:2}) → ["a","b"]</span>
+<span class="cm">// .length → 2</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="5">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q7</span>
+        <span class="q-text">Print all keys and values using <code>for...in</code> loop.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> person = {
+  name: <span class="str">"Rahul"</span>,
+  age:  <span class="num">22</span>,
+  city: <span class="str">"Delhi"</span>
+};
+
+<span class="cm">// for...in gives keys:</span>
+<span class="kw">for</span> (<span class="kw">let</span> key <span class="kw">in</span> person) {
+  console.<span class="fn">log</span>(<span class="str">`${key}: ${person[key]}`</span>);
+}
+<span class="cm">// name: Rahul</span>
+<span class="cm">// age: 22</span>
+<span class="cm">// city: Delhi</span>
+
+<span class="cm">// Alternative with Object.entries():</span>
+Object.<span class="fn">entries</span>(person).<span class="fn">forEach</span>(([key, val]) => {
+  console.<span class="fn">log</span>(<span class="str">`${key} → ${val}`</span>);
+});</code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="5">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q8</span>
+        <span class="q-text">Check whether the property <code>"email"</code> exists inside an object.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> user = {
+  name:  <span class="str">"Anubhav"</span>,
+  phone: <span class="str">"9999999999"</span>
+};
+
+<span class="cm">// Method 1: in operator</span>
+console.<span class="fn">log</span>(<span class="str">"email"</span> <span class="kw">in</span> user);        <span class="cm">// false</span>
+console.<span class="fn">log</span>(<span class="str">"name"</span> <span class="kw">in</span> user);         <span class="cm">// true</span>
+
+<span class="cm">// Method 2: hasOwnProperty()</span>
+console.<span class="fn">log</span>(user.<span class="fn">hasOwnProperty</span>(<span class="str">"email"</span>)); <span class="cm">// false</span>
+
+<span class="cm">// Method 3: undefined check</span>
+console.<span class="fn">log</span>(user.email !== undefined);       <span class="cm">// false</span>
+
+<span class="cm">// Practical use:</span>
+<span class="kw">if</span> (!(<span class="str">"email"</span> <span class="kw">in</span> user)) {
+  console.<span class="fn">log</span>(<span class="str">"Please add your email!"</span>);
+}</code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="5">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q9</span>
+        <span class="q-text">Merge two objects into one using the spread operator.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> obj1 = { a: <span class="num">1</span>, b: <span class="num">2</span> };
+<span class="kw">const</span> obj2 = { c: <span class="num">3</span>, d: <span class="num">4</span> };
+
+<span class="kw">const</span> merged = { ...obj1, ...obj2 };
+console.<span class="fn">log</span>(merged); <span class="cm">// { a:1, b:2, c:3, d:4 }</span>
+
+<span class="cm">// If same key exists, rightmost wins:</span>
+<span class="kw">const</span> o1 = { x: <span class="num">1</span>, y: <span class="num">2</span> };
+<span class="kw">const</span> o2 = { y: <span class="num">99</span>, z: <span class="num">3</span> };
+console.<span class="fn">log</span>({ ...o1, ...o2 }); <span class="cm">// { x:1, y:99, z:3 }</span>
+
+<span class="cm">// Alternative: Object.assign()</span>
+<span class="kw">const</span> merged2 = Object.<span class="fn">assign</span>({}, obj1, obj2);
+console.<span class="fn">log</span>(merged2); <span class="cm">// { a:1, b:2, c:3, d:4 }</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="5">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q10</span>
+        <span class="q-text">Convert an object into an array of key-value pairs using <code>Object.entries()</code>.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> user = {
+  name: <span class="str">"Aman"</span>,
+  age:  <span class="num">21</span>
+};
+
+<span class="kw">const</span> entries = Object.<span class="fn">entries</span>(user);
+console.<span class="fn">log</span>(entries);
+<span class="cm">// [["name","Aman"],["age",21]]</span>
+
+<span class="cm">// Destructure during iteration:</span>
+entries.<span class="fn">forEach</span>(([key, value]) => {
+  console.<span class="fn">log</span>(<span class="str">`${key} = ${value}`</span>);
+});
+
+<span class="cm">// Other conversion methods:</span>
+console.<span class="fn">log</span>(Object.<span class="fn">keys</span>(user));   <span class="cm">// ["name","age"]</span>
+console.<span class="fn">log</span>(Object.<span class="fn">values</span>(user)); <span class="cm">// ["Aman",21]</span></code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Problem Solving -->
+  <div class="subsection-label" style="margin-top:24px">🔴 Problem Solving Level — Q11 to Q15</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q11</span>
+        <span class="q-text">Find the student with highest marks from an object of marks.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> marks = {
+  Anubhav: <span class="num">95</span>,
+  Rahul:   <span class="num">82</span>,
+  Aman:    <span class="num">90</span>
+};
+
+<span class="cm">// Method 1: reduce on entries</span>
+<span class="kw">const</span> topper = Object.<span class="fn">entries</span>(marks).<span class="fn">reduce</span>((best, [name, score]) => {
+  <span class="kw">return</span> score > best[<span class="num">1</span>] ? [name, score] : best;
+});
+console.<span class="fn">log</span>(topper[<span class="num">0</span>]); <span class="cm">// "Anubhav"</span>
+
+<span class="cm">// Method 2: sort and take first</span>
+<span class="kw">const</span> sorted = Object.<span class="fn">entries</span>(marks).<span class="fn">sort</span>((a, b) => b[<span class="num">1</span>] - a[<span class="num">1</span>]);
+console.<span class="fn">log</span>(sorted[<span class="num">0</span>][<span class="num">0</span>]); <span class="cm">// "Anubhav"</span>
+
+<span class="cm">// Method 3: manual loop</span>
+<span class="kw">let</span> topName = <span class="str">""</span>, topScore = -Infinity;
+<span class="kw">for</span> (<span class="kw">let</span> [name, score] <span class="kw">of</span> Object.<span class="fn">entries</span>(marks)) {
+  <span class="kw">if</span> (score > topScore) { topScore = score; topName = name; }
+}
+console.<span class="fn">log</span>(topName); <span class="cm">// "Anubhav"</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q12</span>
+        <span class="q-text">Find the total salary from an object of name → salary pairs.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> salaries = {
+  john: <span class="num">1000</span>,
+  alex: <span class="num">2000</span>,
+  bob:  <span class="num">1500</span>
+};
+
+<span class="cm">// Method 1: reduce on values</span>
+<span class="kw">const</span> total = Object.<span class="fn">values</span>(salaries).<span class="fn">reduce</span>((acc, sal) => acc + sal, <span class="num">0</span>);
+console.<span class="fn">log</span>(total); <span class="cm">// 4500</span>
+
+<span class="cm">// Method 2: for...in loop</span>
+<span class="kw">let</span> sum = <span class="num">0</span>;
+<span class="kw">for</span> (<span class="kw">let</span> person <span class="kw">in</span> salaries) {
+  sum += salaries[person];
+}
+console.<span class="fn">log</span>(sum); <span class="cm">// 4500</span>
+
+<span class="cm">// Breakdown:</span>
+Object.<span class="fn">entries</span>(salaries).<span class="fn">forEach</span>(([name, sal]) =>
+  console.<span class="fn">log</span>(<span class="str">`${name}: ₹${sal}`</span>)
+);</code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q13</span>
+        <span class="q-text">Access nested object properties — print city and pincode.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> user = {
+  name: <span class="str">"Anubhav"</span>,
+  address: {
+    city:    <span class="str">"Bhopal"</span>,
+    pincode: <span class="num">462001</span>
+  }
+};
+
+<span class="cm">// Dot notation:</span>
+console.<span class="fn">log</span>(user.address.city);    <span class="cm">// "Bhopal"</span>
+console.<span class="fn">log</span>(user.address.pincode); <span class="cm">// 462001</span>
+
+<span class="cm">// Destructuring:</span>
+<span class="kw">const</span> { city, pincode } = user.address;
+console.<span class="fn">log</span>(city, pincode); <span class="cm">// "Bhopal" 462001</span>
+
+<span class="cm">// Optional chaining (safe access):</span>
+console.<span class="fn">log</span>(user?.address?.city);    <span class="cm">// "Bhopal"</span>
+console.<span class="fn">log</span>(user?.phone?.number);    <span class="cm">// undefined (no error)</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q14</span>
+        <span class="q-text">Create an object with a method <code>getResult()</code> that returns "Pass" or "Fail".</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> student = {
+  name:  <span class="str">"Anubhav"</span>,
+  marks: <span class="num">85</span>,
+  <span class="fn">getResult</span>() {
+    <span class="kw">return</span> <span class="kw">this</span>.marks > <span class="num">40</span> ? <span class="str">"Pass"</span> : <span class="str">"Fail"</span>;
+  }
+};
+
+console.<span class="fn">log</span>(student.<span class="fn">getResult</span>()); <span class="cm">// "Pass"</span>
+
+<span class="cm">// Test with failing marks:</span>
+student.marks = <span class="num">30</span>;
+console.<span class="fn">log</span>(student.<span class="fn">getResult</span>()); <span class="cm">// "Fail"</span>
+
+<span class="cm">// Extended version with grade:</span>
+<span class="kw">const</span> student2 = {
+  name: <span class="str">"Rahul"</span>,
+  marks: <span class="num">72</span>,
+  <span class="fn">getResult</span>() {
+    <span class="kw">if</span> (<span class="kw">this</span>.marks >= <span class="num">90</span>) <span class="kw">return</span> <span class="str">"Pass - Grade A"</span>;
+    <span class="kw">if</span> (<span class="kw">this</span>.marks >= <span class="num">60</span>) <span class="kw">return</span> <span class="str">"Pass - Grade B"</span>;
+    <span class="kw">if</span> (<span class="kw">this</span>.marks >= <span class="num">40</span>) <span class="kw">return</span> <span class="str">"Pass - Grade C"</span>;
+    <span class="kw">return</span> <span class="str">"Fail"</span>;
+  }
+};
+console.<span class="fn">log</span>(student2.<span class="fn">getResult</span>()); <span class="cm">// "Pass - Grade B"</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q15</span>
+        <span class="q-text">Convert the array <code>["name","Anubhav","age",24]</code> into an object.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> arr = [<span class="str">"name"</span>, <span class="str">"Anubhav"</span>, <span class="str">"age"</span>, <span class="num">24</span>];
+
+<span class="cm">// Method 1: loop — every even index is key, odd is value</span>
+<span class="kw">const</span> obj = {};
+<span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">0</span>; i < arr.length; i += <span class="num">2</span>) {
+  obj[arr[i]] = arr[i + <span class="num">1</span>];
+}
+console.<span class="fn">log</span>(obj); <span class="cm">// { name: "Anubhav", age: 24 }</span>
+
+<span class="cm">// Method 2: reduce</span>
+<span class="kw">const</span> obj2 = arr.<span class="fn">reduce</span>((acc, val, idx) => {
+  <span class="kw">if</span> (idx % <span class="num">2</span> === <span class="num">0</span>) acc[val] = arr[idx + <span class="num">1</span>];
+  <span class="kw">return</span> acc;
+}, {});
+console.<span class="fn">log</span>(obj2); <span class="cm">// { name: "Anubhav", age: 24 }</span>
+
+<span class="cm">// Method 3: chunk into pairs then fromEntries</span>
+<span class="kw">const</span> pairs = [];
+<span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">0</span>; i < arr.length; i += <span class="num">2</span>)
+  pairs.<span class="fn">push</span>([arr[i], arr[i+<span class="num">1</span>]]);
+console.<span class="fn">log</span>(Object.<span class="fn">fromEntries</span>(pairs)); <span class="cm">// { name: "Anubhav", age: 24 }</span></code></pre>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Hard -->
+  <div class="subsection-label" style="margin-top:24px">🔥 Harder Practice — Q16 to Q20</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q16</span>
+        <span class="q-text">Count the frequency of each character in the string "banana".</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> str = <span class="str">"banana"</span>;
+
+<span class="cm">// Method 1: reduce on split array</span>
+<span class="kw">const</span> freq = str.<span class="fn">split</span>(<span class="str">""</span>).<span class="fn">reduce</span>((acc, ch) => {
+  acc[ch] = (acc[ch] || <span class="num">0</span>) + <span class="num">1</span>;
+  <span class="kw">return</span> acc;
+}, {});
+console.<span class="fn">log</span>(freq);
+<span class="cm">// { b:1, a:3, n:2 }</span>
+
+<span class="cm">// Method 2: for...of loop</span>
+<span class="kw">const</span> freq2 = {};
+<span class="kw">for</span> (<span class="kw">let</span> ch <span class="kw">of</span> str) {
+  freq2[ch] = (freq2[ch] || <span class="num">0</span>) + <span class="num">1</span>;
+}
+console.<span class="fn">log</span>(freq2); <span class="cm">// { b:1, a:3, n:2 }</span>
+
+<span class="cm">// Sorted by frequency (highest first):</span>
+<span class="kw">const</span> sorted = Object.<span class="fn">entries</span>(freq)
+  .<span class="fn">sort</span>((a, b) => b[<span class="num">1</span>] - a[<span class="num">1</span>]);
+console.<span class="fn">log</span>(sorted); <span class="cm">// [["a",3],["n",2],["b",1]]</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q17</span>
+        <span class="q-text">Group users by age — produce an object where each key is an age.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> users = [
+  { name: <span class="str">"A"</span>, age: <span class="num">20</span> },
+  { name: <span class="str">"B"</span>, age: <span class="num">21</span> },
+  { name: <span class="str">"C"</span>, age: <span class="num">20</span> }
+];
+
+<span class="kw">const</span> grouped = users.<span class="fn">reduce</span>((acc, user) => {
+  <span class="kw">const</span> key = user.age;
+  <span class="kw">if</span> (!acc[key]) {
+    acc[key] = [];          <span class="cm">// create bucket if doesn't exist</span>
+  }
+  acc[key].<span class="fn">push</span>(user);   <span class="cm">// add user to bucket</span>
+  <span class="kw">return</span> acc;
+}, {});
+
+console.<span class="fn">log</span>(grouped);
+<span class="cm">// {</span>
+<span class="cm">//   20: [{name:"A",age:20},{name:"C",age:20}],</span>
+<span class="cm">//   21: [{name:"B",age:21}]</span>
+<span class="cm">// }</span>
+
+<span class="cm">// Shorter with ||= operator:</span>
+<span class="kw">const</span> grouped2 = users.<span class="fn">reduce</span>((acc, user) => {
+  (acc[user.age] = acc[user.age] || []).<span class="fn">push</span>(user);
+  <span class="kw">return</span> acc;
+}, {});</code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q18</span>
+        <span class="q-text">Check whether a deep property path like <code>"user.address.city"</code> exists dynamically.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">function</span> <span class="fn">hasDeepProperty</span>(obj, path) {
+  <span class="kw">const</span> keys = path.<span class="fn">split</span>(<span class="str">"."</span>);  <span class="cm">// ["user","address","city"]</span>
+  <span class="kw">let</span> current = obj;
+
+  <span class="kw">for</span> (<span class="kw">let</span> key <span class="kw">of</span> keys) {
+    <span class="kw">if</span> (current === <span class="kw">null</span> || current === undefined || !(key <span class="kw">in</span> current)) {
+      <span class="kw">return</span> <span class="kw">false</span>;
+    }
+    current = current[key];
+  }
+  <span class="kw">return</span> <span class="kw">true</span>;
+}
+
+<span class="kw">const</span> data = {
+  user: {
+    address: {
+      city: <span class="str">"Bhopal"</span>
+    }
+  }
+};
+
+console.<span class="fn">log</span>(<span class="fn">hasDeepProperty</span>(data, <span class="str">"user.address.city"</span>));   <span class="cm">// true</span>
+console.<span class="fn">log</span>(<span class="fn">hasDeepProperty</span>(data, <span class="str">"user.address.pincode"</span>)); <span class="cm">// false</span>
+console.<span class="fn">log</span>(<span class="fn">hasDeepProperty</span>(data, <span class="str">"user.phone.number"</span>));   <span class="cm">// false</span>
+
+<span class="cm">// Modern: optional chaining</span>
+<span class="kw">const</span> city = data?.user?.address?.city;
+console.<span class="fn">log</span>(city !== undefined); <span class="cm">// true</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q19</span>
+        <span class="q-text">Check if two objects have the same keys and values.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">function</span> <span class="fn">isEqual</span>(obj1, obj2) {
+  <span class="kw">const</span> keys1 = Object.<span class="fn">keys</span>(obj1);
+  <span class="kw">const</span> keys2 = Object.<span class="fn">keys</span>(obj2);
+
+  <span class="cm">// Different number of keys → not equal</span>
+  <span class="kw">if</span> (keys1.length !== keys2.length) <span class="kw">return</span> <span class="kw">false</span>;
+
+  <span class="cm">// Check each key and value</span>
+  <span class="kw">for</span> (<span class="kw">let</span> key <span class="kw">of</span> keys1) {
+    <span class="kw">if</span> (obj1[key] !== obj2[key]) <span class="kw">return</span> <span class="kw">false</span>;
+  }
+  <span class="kw">return</span> <span class="kw">true</span>;
+}
+
+console.<span class="fn">log</span>(<span class="fn">isEqual</span>({ a:<span class="num">1</span>, b:<span class="num">2</span> }, { a:<span class="num">1</span>, b:<span class="num">2</span> })); <span class="cm">// true</span>
+console.<span class="fn">log</span>(<span class="fn">isEqual</span>({ a:<span class="num">1</span>, b:<span class="num">2</span> }, { a:<span class="num">1</span>, b:<span class="num">3</span> })); <span class="cm">// false</span>
+console.<span class="fn">log</span>(<span class="fn">isEqual</span>({ a:<span class="num">1</span> },     { a:<span class="num">1</span>, b:<span class="num">2</span> })); <span class="cm">// false</span>
+
+<span class="cm">// Quick but shallow — JSON trick:</span>
+<span class="kw">const</span> same = (o1, o2) => JSON.<span class="fn">stringify</span>(o1) === JSON.<span class="fn">stringify</span>(o2);
+console.<span class="fn">log</span>(<span class="fn">same</span>({ a:<span class="num">1</span>, b:<span class="num">2</span> }, { a:<span class="num">1</span>, b:<span class="num">2</span> })); <span class="cm">// true</span>
+<span class="cm">// ⚠️ JSON trick is key-order-sensitive</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">S4-Q20</span>
+        <span class="q-text">Remove duplicate objects from array based on <code>id</code>.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="kw">const</span> items = [
+  { id: <span class="num">1</span>, name: <span class="str">"A"</span> },
+  { id: <span class="num">2</span>, name: <span class="str">"B"</span> },
+  { id: <span class="num">1</span>, name: <span class="str">"A"</span> }  <span class="cm">// duplicate</span>
+];
+
+<span class="cm">// Method 1: reduce — keep first occurrence of each id</span>
+<span class="kw">const</span> unique = items.<span class="fn">reduce</span>((acc, item) => {
+  <span class="kw">const</span> exists = acc.<span class="fn">find</span>(i => i.id === item.id);
+  <span class="kw">if</span> (!exists) acc.<span class="fn">push</span>(item);
+  <span class="kw">return</span> acc;
+}, []);
+console.<span class="fn">log</span>(unique);
+<span class="cm">// [{id:1,name:"A"},{id:2,name:"B"}]</span>
+
+<span class="cm">// Method 2: Map (most efficient O(n))</span>
+<span class="kw">const</span> seen = <span class="kw">new</span> <span class="fn">Map</span>();
+<span class="kw">const</span> unique2 = items.<span class="fn">filter</span>(item => {
+  <span class="kw">if</span> (seen.<span class="fn">has</span>(item.id)) <span class="kw">return</span> <span class="kw">false</span>;
+  seen.<span class="fn">set</span>(item.id, <span class="kw">true</span>);
+  <span class="kw">return</span> <span class="kw">true</span>;
+});
+console.<span class="fn">log</span>(unique2);
+<span class="cm">// [{id:1,name:"A"},{id:2,name:"B"}]</span>
+
+<span class="cm">// Method 3: one-liner with Map + spread</span>
+<span class="kw">const</span> unique3 = [...<span class="kw">new</span> <span class="fn">Map</span>(items.<span class="fn">map</span>(i => [i.id, i])).<span class="fn">values</span>()];
+console.<span class="fn">log</span>(unique3);</code></pre>
+      </div>
+    </div>
+
+  </div>
 </div>
 </main>
 
