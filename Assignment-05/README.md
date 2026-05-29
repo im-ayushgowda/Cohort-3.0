@@ -3,8 +3,7 @@
 A clean and responsive wellness-inspired landing page built using HTML and CSS.
 
 ## 🚀 Live Demo
-[
-[https://im-ayushgowda.github.io/lombok-wellness/](https://im-ayushgowda.github.io/lombok-wellness/)](https://im-ayushgowda.github.io/Cohort-3.0/Assignment-05/)
+(https://im-ayushgowda.github.io/Cohort-3.0/Assignment-05/)
 
 ## 📌 Features
 
