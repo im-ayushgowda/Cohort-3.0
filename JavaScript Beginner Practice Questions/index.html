@@ -296,11 +296,11 @@
 
 <div class="hero">
   <div class="hero-tag">Complete JavaScript Reference</div>
-  <h1>Master JavaScript with<br><em>200+ Q&amp;A</em></h1>
+  <h1>Master JavaScript with<br><em>300+ Q&amp;A</em></h1>
   <p>Fundamentals, Functions, Arrays, Objects, Advanced Patterns — everything from beginner to interview-ready.</p>
   <div class="stats">
-    <div class="stat"><div class="stat-n">310</div><div class="stat-l">Questions</div></div>
-    <div class="stat"><div class="stat-n">9</div><div class="stat-l">Parts</div></div>
+    <div class="stat"><div class="stat-n">331</div><div class="stat-l">Questions</div></div>
+    <div class="stat"><div class="stat-n">10</div><div class="stat-l">Parts</div></div>
     <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Answered</div></div>
   </div>
 </div>
@@ -320,6 +320,7 @@
   <button class="pill" data-c="3" onclick="filterSection('arrays-deep',this)">Arrays Deep</button>
   <button class="pill" data-c="4" onclick="filterSection('sheet3',this)">Sheet 3 — Methods</button>
   <button class="pill" data-c="5" onclick="filterSection('sheet4',this)">Sheet 4 — Objects</button>
+  <button class="pill" data-c="2" onclick="filterSection('practice',this)">🚀 Practice Tasks</button>
 </div>
 
 <main id="main">
@@ -6079,6 +6080,429 @@ console.<span class="fn">log</span>(unique3);</code></pre>
 
   </div>
 </div>
+
+<!-- ═══════════════════════════════════════════════════
+     PRACTICE TASKS — Beginner Friendly (Q1–Q21)
+═══════════════════════════════════════════════════ -->
+<div class="section" id="practice">
+  <div class="section-header">
+    <span class="section-num">PART 10</span>
+    <h2 class="section-title">🚀 JavaScript Practice Tasks — Beginner Friendly</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="subsection-label">Part 1 — Variables, Functions &amp; Conditions</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P1-Q1</span>
+        <span class="q-text">Create a function <code>add(a, b)</code> that returns the sum of two numbers. <code>add(10, 20)</code> → <code>30</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q1. Sum of two numbers</span>
+<span class="kw">function</span> <span class="fn">add</span>(a, b) {
+  <span class="kw">return</span> a + b;
+}
+
+console.<span class="fn">log</span>(<span class="fn">add</span>(<span class="num">10</span>, <span class="num">20</span>)); <span class="cm">// Output: 30</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P1-Q2</span>
+        <span class="q-text">Create a function <code>square(n)</code> that returns the square of a number. <code>square(5)</code> → <code>25</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q2. Square of a number</span>
+<span class="kw">function</span> <span class="fn">square</span>(n) {
+  <span class="kw">return</span> n * n;
+}
+
+console.<span class="fn">log</span>(<span class="fn">square</span>(<span class="num">5</span>)); <span class="cm">// Output: 25</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P1-Q3</span>
+        <span class="q-text">Create a function <code>checkEvenOdd(n)</code> that returns "Even" or "Odd". <code>checkEvenOdd(7)</code> → <code>Odd</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q3. Even or Odd</span>
+<span class="kw">function</span> <span class="fn">checkEvenOdd</span>(n) {
+  <span class="kw">return</span> n % <span class="num">2</span> === <span class="num">0</span> ? <span class="str">"Even"</span> : <span class="str">"Odd"</span>;
+}
+
+console.<span class="fn">log</span>(<span class="fn">checkEvenOdd</span>(<span class="num">7</span>)); <span class="cm">// Output: Odd</span>
+console.<span class="fn">log</span>(<span class="fn">checkEvenOdd</span>(<span class="num">4</span>)); <span class="cm">// Output: Even</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P1-Q4</span>
+        <span class="q-text">Create a function <code>max(a, b)</code> that returns the larger of two numbers. <code>max(10, 20)</code> → <code>20</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q4. Larger of two numbers</span>
+<span class="kw">function</span> <span class="fn">max</span>(a, b) {
+  <span class="kw">return</span> a > b ? a : b;
+}
+
+console.<span class="fn">log</span>(<span class="fn">max</span>(<span class="num">10</span>, <span class="num">20</span>)); <span class="cm">// Output: 20</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P1-Q5</span>
+        <span class="q-text">Create a function <code>isEligible(age)</code> that checks if a person can vote. <code>isEligible(18)</code> → <code>Eligible</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q5. Voting eligibility</span>
+<span class="kw">function</span> <span class="fn">isEligible</span>(age) {
+  <span class="kw">return</span> age >= <span class="num">18</span> ? <span class="str">"Eligible"</span> : <span class="str">"Not Eligible"</span>;
+}
+
+console.<span class="fn">log</span>(<span class="fn">isEligible</span>(<span class="num">18</span>)); <span class="cm">// Output: Eligible</span>
+console.<span class="fn">log</span>(<span class="fn">isEligible</span>(<span class="num">15</span>)); <span class="cm">// Output: Not Eligible</span></code></pre>
+      </div>
+    </div>
+
+  </div><!-- end Part 1 grid -->
+
+  <div class="subsection-label">Part 2 — Loops</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P2-Q6</span>
+        <span class="q-text">Print numbers from 1 to 50 using a loop.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q6. Numbers 1 to 50</span>
+<span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">1</span>; i <= <span class="num">50</span>; i++) {
+  console.<span class="fn">log</span>(i);
+}
+<span class="cm">// Output: 1, 2, 3, ... 50</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P2-Q7</span>
+        <span class="q-text">Print all even numbers between 1 and 100.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q7. Even numbers 1 to 100</span>
+<span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">2</span>; i <= <span class="num">100</span>; i += <span class="num">2</span>) {
+  console.<span class="fn">log</span>(i);
+}
+<span class="cm">// Output: 2, 4, 6, ... 100</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P2-Q8</span>
+        <span class="q-text">Find the sum of numbers from 1 to 100. Expected output: <code>5050</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q8. Sum of 1 to 100</span>
+<span class="kw">let</span> sum = <span class="num">0</span>;
+<span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">1</span>; i <= <span class="num">100</span>; i++) {
+  sum += i;
+}
+console.<span class="fn">log</span>(sum); <span class="cm">// Output: 5050</span></code></pre>
+        <div class="note"><strong>Tip:</strong> You can also use the Gauss formula: <code>n * (n + 1) / 2</code> → <code>100 * 101 / 2 = 5050</code></div>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P2-Q9</span>
+        <span class="q-text">Print the multiplication table of a given number. <code>table(5)</code> → <code>5 x 1 = 5 ... 5 x 10 = 50</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q9. Multiplication table</span>
+<span class="kw">function</span> <span class="fn">table</span>(n) {
+  <span class="kw">for</span> (<span class="kw">let</span> i = <span class="num">1</span>; i <= <span class="num">10</span>; i++) {
+    console.<span class="fn">log</span>(`${n} x ${i} = ${n * i}`);
+  }
+}
+
+<span class="fn">table</span>(<span class="num">5</span>);
+<span class="cm">// 5 x 1 = 5</span>
+<span class="cm">// 5 x 2 = 10</span>
+<span class="cm">// ...</span>
+<span class="cm">// 5 x 10 = 50</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P2-Q10</span>
+        <span class="q-text">Count how many digits are present in a number. <code>countDigits(12345)</code> → <code>5</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q10. Count digits in a number</span>
+<span class="kw">function</span> <span class="fn">countDigits</span>(n) {
+  <span class="kw">return</span> String(n).length;
+}
+
+console.<span class="fn">log</span>(<span class="fn">countDigits</span>(<span class="num">12345</span>)); <span class="cm">// Output: 5</span>
+console.<span class="fn">log</span>(<span class="fn">countDigits</span>(<span class="num">9</span>));     <span class="cm">// Output: 1</span>
+
+<span class="cm">// Alternative: using Math</span>
+<span class="kw">function</span> <span class="fn">countDigits2</span>(n) {
+  <span class="kw">let</span> count = <span class="num">0</span>;
+  n = Math.<span class="fn">abs</span>(n); <span class="cm">// handle negatives</span>
+  <span class="kw">do</span> {
+    count++;
+    n = Math.<span class="fn">floor</span>(n / <span class="num">10</span>);
+  } <span class="kw">while</span> (n > <span class="num">0</span>);
+  <span class="kw">return</span> count;
+}</code></pre>
+      </div>
+    </div>
+
+  </div><!-- end Part 2 grid -->
+
+  <div class="subsection-label">Part 3 — Strings</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P3-Q11</span>
+        <span class="q-text">Reverse a string. <code>reverseString("hello")</code> → <code>"olleh"</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q11. Reverse a string</span>
+<span class="kw">function</span> <span class="fn">reverseString</span>(str) {
+  <span class="kw">return</span> str.<span class="fn">split</span>(<span class="str">""</span>).<span class="fn">reverse</span>().<span class="fn">join</span>(<span class="str">""</span>);
+}
+
+console.<span class="fn">log</span>(<span class="fn">reverseString</span>(<span class="str">"hello"</span>)); <span class="cm">// Output: olleh</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P3-Q12</span>
+        <span class="q-text">Count vowels in a string. <code>countVowels("javascript")</code> → <code>3</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q12. Count vowels in a string</span>
+<span class="kw">function</span> <span class="fn">countVowels</span>(str) {
+  <span class="kw">const</span> vowels = <span class="str">"aeiouAEIOU"</span>;
+  <span class="kw">let</span> count = <span class="num">0</span>;
+  <span class="kw">for</span> (<span class="kw">let</span> ch <span class="kw">of</span> str) {
+    <span class="kw">if</span> (vowels.<span class="fn">includes</span>(ch)) count++;
+  }
+  <span class="kw">return</span> count;
+}
+
+console.<span class="fn">log</span>(<span class="fn">countVowels</span>(<span class="str">"javascript"</span>)); <span class="cm">// Output: 3 (a, a, i)</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P3-Q13</span>
+        <span class="q-text">Check whether a string is a palindrome. <code>isPalindrome("madam")</code> → <code>true</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q13. Check palindrome</span>
+<span class="kw">function</span> <span class="fn">isPalindrome</span>(str) {
+  <span class="kw">const</span> reversed = str.<span class="fn">split</span>(<span class="str">""</span>).<span class="fn">reverse</span>().<span class="fn">join</span>(<span class="str">""</span>);
+  <span class="kw">return</span> str === reversed;
+}
+
+console.<span class="fn">log</span>(<span class="fn">isPalindrome</span>(<span class="str">"madam"</span>));  <span class="cm">// Output: true</span>
+console.<span class="fn">log</span>(<span class="fn">isPalindrome</span>(<span class="str">"hello"</span>));  <span class="cm">// Output: false</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P3-Q14</span>
+        <span class="q-text">Convert the first letter of every word to uppercase. <code>capitalize("hello world")</code> → <code>"Hello World"</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q14. Capitalize each word</span>
+<span class="kw">function</span> <span class="fn">capitalize</span>(str) {
+  <span class="kw">return</span> str
+    .<span class="fn">split</span>(<span class="str">" "</span>)
+    .<span class="fn">map</span>(word => word.<span class="fn">charAt</span>(<span class="num">0</span>).<span class="fn">toUpperCase</span>() + word.<span class="fn">slice</span>(<span class="num">1</span>))
+    .<span class="fn">join</span>(<span class="str">" "</span>);
+}
+
+console.<span class="fn">log</span>(<span class="fn">capitalize</span>(<span class="str">"hello world"</span>)); <span class="cm">// Output: Hello World</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P3-Q15</span>
+        <span class="q-text">Count how many times a character appears in a string. <code>countChar("javascript", "a")</code> → <code>2</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q15. Count character occurrences</span>
+<span class="kw">function</span> <span class="fn">countChar</span>(str, char) {
+  <span class="kw">let</span> count = <span class="num">0</span>;
+  <span class="kw">for</span> (<span class="kw">let</span> ch <span class="kw">of</span> str) {
+    <span class="kw">if</span> (ch === char) count++;
+  }
+  <span class="kw">return</span> count;
+}
+
+console.<span class="fn">log</span>(<span class="fn">countChar</span>(<span class="str">"javascript"</span>, <span class="str">"a"</span>)); <span class="cm">// Output: 2</span>
+
+<span class="cm">// One-liner alternative:</span>
+<span class="kw">const</span> <span class="fn">countChar2</span> = (str, char) => str.<span class="fn">split</span>(char).length - <span class="num">1</span>;</code></pre>
+      </div>
+    </div>
+
+  </div><!-- end Part 3 grid -->
+
+  <div class="subsection-label">Part 4 — Arrays</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P4-Q16</span>
+        <span class="q-text">Find the largest number in an array. <code>[10, 20, 30, 40, 50]</code> → <code>50</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q16. Largest number in an array</span>
+<span class="kw">function</span> <span class="fn">findLargest</span>(arr) {
+  <span class="kw">return</span> Math.<span class="fn">max</span>(...arr);
+}
+
+console.<span class="fn">log</span>(<span class="fn">findLargest</span>([<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>, <span class="num">40</span>, <span class="num">50</span>])); <span class="cm">// Output: 50</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P4-Q17</span>
+        <span class="q-text">Find the smallest number in an array. <code>[10, 20, 30, 40, 50]</code> → <code>10</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q17. Smallest number in an array</span>
+<span class="kw">function</span> <span class="fn">findSmallest</span>(arr) {
+  <span class="kw">return</span> Math.<span class="fn">min</span>(...arr);
+}
+
+console.<span class="fn">log</span>(<span class="fn">findSmallest</span>([<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>, <span class="num">40</span>, <span class="num">50</span>])); <span class="cm">// Output: 10</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P4-Q18</span>
+        <span class="q-text">Find the sum of all array elements. <code>[1, 2, 3, 4, 5]</code> → <code>15</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q18. Sum of all array elements</span>
+<span class="kw">function</span> <span class="fn">arraySum</span>(arr) {
+  <span class="kw">return</span> arr.<span class="fn">reduce</span>((total, n) => total + n, <span class="num">0</span>);
+}
+
+console.<span class="fn">log</span>(<span class="fn">arraySum</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>])); <span class="cm">// Output: 15</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P4-Q19</span>
+        <span class="q-text">Return only even numbers from an array. <code>[1, 2, 3, 4, 5, 6]</code> → <code>[2, 4, 6]</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q19. Filter even numbers</span>
+<span class="kw">function</span> <span class="fn">getEvens</span>(arr) {
+  <span class="kw">return</span> arr.<span class="fn">filter</span>(n => n % <span class="num">2</span> === <span class="num">0</span>);
+}
+
+console.<span class="fn">log</span>(<span class="fn">getEvens</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>])); <span class="cm">// Output: [2, 4, 6]</span></code></pre>
+      </div>
+    </div>
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P4-Q20</span>
+        <span class="q-text">Remove duplicate values from an array. <code>[1, 2, 2, 3, 4, 4, 5]</code> → <code>[1, 2, 3, 4, 5]</code></span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// Q20. Remove duplicates</span>
+<span class="kw">function</span> <span class="fn">removeDuplicates</span>(arr) {
+  <span class="kw">return</span> [...<span class="kw">new</span> <span class="fn">Set</span>(arr)];
+}
+
+console.<span class="fn">log</span>(<span class="fn">removeDuplicates</span>([<span class="num">1</span>, <span class="num">2</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">4</span>, <span class="num">5</span>]));
+<span class="cm">// Output: [1, 2, 3, 4, 5]</span></code></pre>
+        <div class="note"><strong>Tip:</strong> <code>Set</code> automatically removes duplicates. Spreading it back into an array gives you a clean unique list.</div>
+      </div>
+    </div>
+
+  </div><!-- end Part 4 grid -->
+
+  <div class="subsection-label">🎯 Bonus Task — Student Marks Calculator</div>
+  <div class="qa-grid">
+
+    <div class="qa-card" data-cat="2">
+      <div class="qa-question" onclick="toggle(this)">
+        <span class="q-num">P-BONUS</span>
+        <span class="q-text">Build a Student Marks Calculator. Input: <code>[50, 60, 70, 80, 90]</code> → Highest, Lowest, Average, Total Marks.</span>
+        <span class="q-toggle">▾</span>
+      </div>
+      <div class="qa-answer">
+        <pre><button class="copy-btn" onclick="copyCode(this)">copy</button><code><span class="cm">// BONUS: Student Marks Calculator</span>
+<span class="kw">function</span> <span class="fn">marksCalculator</span>(marks) {
+  <span class="kw">const</span> highest = Math.<span class="fn">max</span>(...marks);
+  <span class="kw">const</span> lowest  = Math.<span class="fn">min</span>(...marks);
+  <span class="kw">const</span> total   = marks.<span class="fn">reduce</span>((sum, m) => sum + m, <span class="num">0</span>);
+  <span class="kw">const</span> average = total / marks.length;
+
+  console.<span class="fn">log</span>(<span class="str">`Highest Marks: ${highest}`</span>);
+  console.<span class="fn">log</span>(<span class="str">`Lowest Marks:  ${lowest}`</span>);
+  console.<span class="fn">log</span>(<span class="str">`Average Marks: ${average}`</span>);
+  console.<span class="fn">log</span>(<span class="str">`Total Marks:   ${total}`</span>);
+}
+
+<span class="fn">marksCalculator</span>([<span class="num">50</span>, <span class="num">60</span>, <span class="num">70</span>, <span class="num">80</span>, <span class="num">90</span>]);
+<span class="cm">// Highest Marks: 90</span>
+<span class="cm">// Lowest Marks:  50</span>
+<span class="cm">// Average Marks: 70</span>
+<span class="cm">// Total Marks:   350</span></code></pre>
+      </div>
+    </div>
+
+  </div><!-- end bonus grid -->
+</div><!-- end #practice section -->
+
 </main>
 
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
