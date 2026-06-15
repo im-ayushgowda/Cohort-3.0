@@ -1,0 +1,405 @@
+*{
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+html, 
+body{
+    height: 100%;
+    body: 100%
+}
+main{
+  /* height: 100%; */
+  width:100%;
+}
+nav{
+  padding: 0px 150px 0px 150px;
+  display: flex;
+  height: 10%;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: white;
+}
+nav .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+nav .right{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+}
+.profile{
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  background-image: url(https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmF0dXJlJTIwYWVzdGhldGljfGVufDB8fDB8fHww);
+  background-size: cover;
+  background-position: center;
+}
+section {
+    padding: 30px;               
+    flex-direction: column;
+    gap: 30px;                   
+}
+.container{
+  height: 600px;
+  width: 100%;
+  align-items: center;
+  position: relative;
+  justify-content: space-around;
+  border-radius: 16px;
+  background-image: url(https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-position: center;
+  background-size: cover;
+  /* margin-bottom: 40px; */
+}
+section {
+  padding: 0 30px;
+  display: flex;          
+  flex-direction: column; 
+  gap: 30px;
+}
+.hero-text {
+    position: absolute;          
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  
+    text-align: center;
+    color: white;
+    width: 100%; 
+}
+.hero-text h1 {
+    font-size: 100px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    line-height: 1;
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.25);
+}
+.hero-text p {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    background-color: #1a56db;   
+    color: white;
+    padding: 6px 18px;
+    margin-top: 12px;
+    display: inline-block;
+}
+.container1 {
+    width: 100%;
+    background-color: rgb(228, 225, 225);
+    border-radius: 16px;
+    padding: 60px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.section-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.section-header h2 {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #111;
+}
+.divider {
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #111;
+}
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1100px;
+}
+.card {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.card-img {
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+}
+.card-body {
+    padding: 30px 100px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+}
+.card-line {
+    display: block;
+    width: 40px;
+    height: 2px;
+    background-color: #111;
+}
+.card-body p {
+    font-size: 15px;
+    font-weight: 500;
+    color: #222;
+    line-height: 1.6;
+    text-align: center;
+}
+.container1 .card {
+  box-shadow: 5px 3px 25px black;
+}
+.container2 {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+.about-left {
+    height: 100%;
+    width: 50%;
+    background-image: url('https://images.unsplash.com/photo-1621849400072-f554417f7051?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D   ');
+    background-size: cover;
+    background-position: center;
+}
+.about-right {
+    height: 100%;
+    width: 70%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 50px;
+    gap: 24px;
+    text-align: center;
+}
+.about-right h2 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #111;
+}
+.about-right p {
+    font-size: px;
+    line-height: 1.9;
+    color: #333;
+    max-width: 480px;
+    font-weight: 600;
+}
+.divider1 {
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: #111;
+}
+.left {
+    font-size: 20px;
+    font-weight: 500;
+    font-family:
+}
+.right{
+    font-weight: 500;
+
+}
+nav .left p {
+    position: relative;
+    padding-bottom: 4px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+nav .left p::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1a56db;
+    transition: width 0.3s ease;
+}
+
+nav .left p:hover::after {
+    width: 100%;
+}
+
+nav .left p:hover {
+    color: #1a56db;
+}
+nav .right p {
+    position: relative;
+    padding-bottom: 4px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+nav .right p::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1a56db;
+    transition: width 0.3s ease;
+}
+nav .right p:hover::after {
+    width: 100%;
+}
+nav .right p:hover {
+    color: #1a56db;
+}
+.container3 {
+    width: 100%;
+    background-color: rgb(228, 225, 225);
+    border-radius: 16px;
+    padding: 60px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+.container3 {
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 100px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscribe-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.subscribe-content h2 {
+    font-size: 70px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #111;
+}
+
+.subscribe-content p {
+    font-size: 15px;
+    font-weight: 600;
+    color: #444;
+    letter-spacing: 1px;
+}
+
+.subscribe-content input {
+    width: 300px;
+    padding: 14px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+    background-color: white;
+}
+
+.subscribe-content input:focus {
+    border-color: #888;
+}
+
+.subscribe-content button {
+    padding: 10px 28px;
+    background-color: transparent;
+    border: 1px solid #111;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.subscribe-content button:hover {
+    background-color: #111;
+    color: white;
+}
+footer {
+    width: 100%;
+    background-color: white;
+    padding: 40px 0;
+    border-top: 1px solid #e5e5e5;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.footer-left a {
+    font-size: 24px;
+    color: #111;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-left a:hover {
+    color: #1a56db;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.footer-right p {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #111;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 4px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.footer-right p::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #1a56db;
+    transition: width 0.3s ease;
+}
+
+.footer-right p:hover::after {
+    width: 100%;
+}
+
+.footer-right p:hover {
+    color: #1a56db;
+}
